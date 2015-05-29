@@ -1,4 +1,9 @@
 # Paths for bundler's binstubs, rbenv, and user bin
 export PATH="$HOME/.rbenv/bin:$HOME/bin:$HOME/.bin:$PATH"
 
+# Paths for localy installed tools (via Homebrew for example) come first
+export PATH="/usr/local/bin:"$PATH
+
+# Because I had MySQL on my Mac before they installed it by default...
+export PATH="/usr/local/mysql/bin:"$PATH
 # vim: syntax=sh

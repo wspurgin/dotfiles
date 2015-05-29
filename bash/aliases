@@ -3,8 +3,9 @@
 OS=`echo $OSTYPE | sed "s/[^a-zA-Z-]//g"`
 
 # some more ls aliases
-alias ll='ls -l'
+alias ll='ls -al'
 alias l='ls -lF'
+alias la='ls -a'
 
 # cd
 alias ..='cd ..'

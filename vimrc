@@ -73,7 +73,7 @@ syntax enable
 set background=dark
 
 if &t_Co < 256
-  colorscheme bluegreen
+  colorscheme base16-eighties
 else
   let g:base16_shell_path = "~/.bash/base16-shell"
   let base16colorspace=256  " Access colors present in 256 colorspace

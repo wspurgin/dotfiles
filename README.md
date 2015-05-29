@@ -20,6 +20,10 @@ Optional applications which enhance bash, vim, etc.
 ```
 sudo apt-get install silversearcher-ag exuberant-ctags coreutils autojump
 ```
+Or on OS X with Homebrew
+```
+brew install ag ctags coreutils autojump
+```
 
 ### Gems
 

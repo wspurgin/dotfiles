@@ -92,10 +92,14 @@ fi
 # Add project's bin/ to PATH after rbenv init.
 export PATH=".git/safe/../../bin:${PATH}"
 
+PREFIX="/usr"
+if command -v brew >/dev/null 2>&1; then
+  PREFIX=$(brew --prefix)
+fi
 
 # Setup autojump, a faster way to navigate directories.
 if command -v autojump >/dev/null 2>&1; then
-  source /usr/share/autojump/autojump.bash
+  source $PREFIX/share/autojump/autojump.bash
 fi
 
 # vim: ft=sh

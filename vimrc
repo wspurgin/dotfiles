@@ -72,9 +72,7 @@ call plug#end()
 syntax enable
 set background=dark
 
-if &t_Co < 256
-  colorscheme base16-eighties
-else
+if has("gui-running")
   let g:base16_shell_path = "~/.bash/base16-shell"
   let base16colorspace=256  " Access colors present in 256 colorspace
   colorscheme base16-eighties
@@ -85,6 +83,8 @@ else
     " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
     set t_ut=
   endif
+else
+  colorscheme bluegreen
 
 endif
 " }}}

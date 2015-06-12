@@ -72,7 +72,7 @@ call plug#end()
 syntax enable
 set background=dark
 
-if has("gui-running")
+if has("gui_running") || &t_Co >= 256
   let g:base16_shell_path = "~/.bash/base16-shell"
   let base16colorspace=256  " Access colors present in 256 colorspace
   colorscheme base16-eighties
@@ -300,6 +300,14 @@ let g:syntastic_check_on_wq = 0
 
 " let g:syntastic_ruby_checkers = ['rubylint', 'mri']
 " }}}
+
+" Titlecase {{{
+let g:titlecase_map_keys = 0
+nmap <leader>gt <Plug>Titlecase
+vmap <leader>gt <Plug>Titlecase
+nmap <leader>gT <Plug>TitlecaseLine
+" }}}
+
 " Ctrl-P {{{
 let g:ctrlp_max_height = 20            " provide more space to display results
 set wildignore+=tmp/cache/**,*.scssc,*.sassc " ignore tmp files and Sass caches

@@ -104,7 +104,7 @@
   ignore = untracked
 [submodule "vim/bundle/vim-snippets"]
 	path = vim/bundle/vim-snippets
-	url = https://github.com/honza/vim-snippets.git
+  url = https://github.com/honza/vim-snippets.git
   ignore = untracked
 [submodule "vim/bundle/vim-dispatch"]
 	path = vim/bundle/vim-dispatch
@@ -189,3 +189,12 @@
 [submodule "vim/bundle/vim-flagship"]
 	path = vim/bundle/vim-flagship
 	url = https://github.com/tpope/vim-flagship.git
+  ignore = untracked
+[submodule "vim/bundle/python-syntax"]
+  path = vim/bundle/python-syntax
+  url = https://github.com/Hdima/python-syntax
+  ignore = untracked
+[submodule "vim/bundle/vim-cpp-enhanced-highlight"]
+  path = vim/bundle/vim-cpp-enhanced-highlight
+  url = https://github.com/octol/vim-cpp-enhanced-highlight
+  ignore = untracked

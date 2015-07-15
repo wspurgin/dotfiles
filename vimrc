@@ -205,6 +205,25 @@ nnoremap <silent> <Leader>cn :let @* = expand("%:t")<CR>
 
 map <Leader>sc :RVschema<space>
 map <Leader>ag :tabe<CR>:Ag<space>
+
+" if exists(":Tabularize")
+" mnemonic: (a)lign
+"
+" tabularize "=", but not "<=" or "==".
+  nmap <Leader>a= :Tabularize /[^<=]\@<=\(=\)=\@!/<CR>
+  vmap <Leader>a= :Tabularize /[^<=]\@<=\(=\)=\@!/<CR>
+
+  nmap <Leader>a: :Tabularize /:\zs/l1<CR>
+  vmap <Leader>a: :Tabularize /:\zs/l1<CR>
+  nmap <Leader>a{ :Tabularize /{<CR>
+  vmap <Leader>a{ :Tabularize /{<CR>
+  nmap <Leader>a> :Tabularize /=><CR>
+  vmap <Leader>a> :Tabularize /=><CR>
+  nmap <Leader>a, :Tabularize /,\zs/l1<CR>
+  vmap <Leader>a, :Tabularize /,\zs/l1<CR>
+  nmap <Leader>a< :Tabularize /<-<CR>
+  vmap <Leader>a< :Tabularize /<-<CR>
+" endif
 " }}}
 " Abbreviations {{{
 ab zaa ActiveAdmin

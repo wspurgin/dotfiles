@@ -9,7 +9,8 @@
 	br = branch -v
 	b = branch -v
 	d = diff
-	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+  l = log --pretty=details -n 20 --graph --abbrev-commit
+  ll = log --pretty=details --graph --abbrev-commit
 	rc = rebase --continue
 	rs = rebase --skip
 	rn = rebase next
@@ -38,3 +39,5 @@
   templatedir = ~/.git_template
 [push]
   default = simple
+[pretty]
+  details = "format:%C(yellow)%h%Creset -%Cred%d%Creset %s %Cgreen(%cr) %C(bold blue)<%%an>%Creset"

@@ -64,6 +64,8 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/renumber.vim'
 Plug 'zaiste/tmux.vim'
 Plug 'zorab47/vim-gams'
+Plug 'hdima/python-syntax'
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 call plug#end()
 

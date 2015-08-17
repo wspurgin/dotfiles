@@ -57,7 +57,10 @@ alias r="rake"
 # capistrano
 alias csd='cap staging deploy'
 
-alias open='xdg-open'
+# Add the open command alias unless we're on OSX
+if [[ $OS != "darwin" ]]; then
+  alias open='xdg-open'
+fi
 
 # ThingM Blink
 alias bl="blink1-tool --random=3 -t 300 -q; blink1-tool --off -q"
@@ -81,7 +84,7 @@ function tlf {
 
 function browse {
   if [[ $# > 0 ]]; then
-    xdg-open $@ > /dev/null 2>&1 &
+    open $@ > /dev/null 2>&1 &
   else
 
     if [[ -f .env ]]; then
@@ -94,7 +97,7 @@ function browse {
 
     echo "Opening \"http://localhost:$port\" in your browser…"
 
-    xdg-open "http://localhost:$port" > /dev/null 2>&1 &
+    open "http://localhost:$port" > /dev/null 2>&1 &
   fi
 }
 

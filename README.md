@@ -6,8 +6,7 @@ Configuration of my system the way I like it.
 
 ```sh
 git clone https://github.com/wspurgin/dotfiles ~/.dotfiles
-cd ~/.dotfiles
-./bootstrap
+~/.dotfiles/bootstrap
 ```
 
 ## External Apps

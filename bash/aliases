@@ -63,8 +63,8 @@ if [[ $OS != "darwin" ]]; then
 fi
 
 # ThingM Blink
-alias bl="blink1-tool --random=3 -t 300 -q; blink1-tool --off -q"
-alias blink=blink1-tool
+alias bl="blink1 --random=3 -t 300 -q; blink1 --off -q"
+alias blink=blink1
 
 function g {
   if [[ $# -gt 0 ]]; then

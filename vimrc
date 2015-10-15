@@ -78,6 +78,7 @@ if has("gui_running") || &t_Co >= 256
   let g:base16_shell_path = "~/.bash/base16-shell"
   let base16colorspace=256  " Access colors present in 256 colorspace
   colorscheme base16-eighties
+  set guifont=Inconsolata-g\ for\ Powerline:h11
 
   if &term =~ 'screen-256color' && exists('$TMUX')
     " disable Background Color Erase (BCE) so that color schemes
@@ -166,7 +167,12 @@ map <Leader>t :w<CR>:call RunCurrentSpecFile()<CR>
 map <Leader>s :w<CR>:call RunNearestSpec()<CR>
 map <Leader>l :w<CR>:call RunLastSpec()<CR>
 map <Leader>as :w<CR>:call RunAllSpecs()<CR>
-let g:rspec_command = "Dispatch rspec {spec}"
+
+if has("gui_macvim")
+  "don't set rspec_command"
+else
+  let g:rspec_command = "Dispatch rspec {spec}"
+endif
 
 " Paste from system clipboard
 map <Leader>p :set paste<CR>o<ESC>"+]p:set nopaste<CR>

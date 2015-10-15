@@ -6,4 +6,9 @@ export PATH="/usr/local/bin:"$PATH
 
 # Because I had MySQL on my Mac before they installed it by default...
 export PATH="/usr/local/mysql/bin:"$PATH
+
+# Adding Postgres.app command line tools on OS X
+if [[ $OS == "darwin" ]]; then
+  export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin"
+fi
 # vim: syntax=sh

@@ -9,9 +9,9 @@ if [ -t 1 ]; then
   fi
 
   source ~/.bash/completions
-  source ~/.bash/paths
   source ~/.bash/config
   source ~/.bash/aliases
+  source ~/.bash/paths
 
   if [ -f ~/.localrc ]; then
     . ~/.localrc

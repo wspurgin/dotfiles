@@ -18,7 +18,7 @@
 
   # Remove branches that have already been merged with master
   # a.k.a. ‘delete merged’
-  dm = "!git branch --merged | grep -v '\\*\\|next\\|master' | xargs --no-run-if-empty --max-args=1 git branch --delete"
+  dm = "!git branch --merged | ${grep_cmd} -v '\\*|next|master' | xargs ${xargs_args} git branch --delete"
   ; up = "!git remote update -p; git merge --ff-only @{u}"
   loga = log --pretty=format:'%C(yellow)%h %C(red)%ad %C(blue)%<(7)%aN%C(green)%d %Creset%s' --date=short --abbrev-commit --graph
   lognc = log --pretty=format:'%h %ad %<(7)%aN%d %s' --date=short --abbrev-commit --graph

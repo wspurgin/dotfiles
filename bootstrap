@@ -27,6 +27,10 @@ fail () {
   exit
 }
 
+get_os () {
+ echo $OSTYPE | sed "s/[^a-zA-Z-]//g"
+}
+
 setup_gitconfig () {
   if ! [ -f "${HOME}/.gitconfig" ]
   then
@@ -37,7 +41,17 @@ setup_gitconfig () {
     user ' - What is your github author email?'
     read -e git_authoremail
 
-    name="$git_authorname" email="$git_authoremail" envsubst < gitconfig.example > "${HOME}/.gitconfig"
+    args=''
+    cmd=''
+    if [[ "$(get_os)" == "darwin" ]]; then
+      args='-L 1 -n 1'
+      cmd=egrep
+    fi
+
+    args=${args:-'--no-run-if-empty --max-args=1'}
+    cmd=${cmd:-grep}
+
+    name="$git_authorname" email="$git_authoremail" grep_cmd=$cmd xargs_args="$args" envsubst < gitconfig.example > "${HOME}/.gitconfig"
 
     success 'gitconfig'
   fi

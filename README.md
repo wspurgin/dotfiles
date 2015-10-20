@@ -4,6 +4,17 @@ Configuration of my system the way I like it.
 
 ## Installation
 
+### NOTE for OS X users
+This implementation requires that you have the GNU gettext tool `envsubst` In
+order to create a gitconfig for your user. On OS X these are not included by
+default. Before running the below installation instructions, make sure you
+install and add the tools to your path:
+
+```sh
+brew install gettext && export PATH=$PATH":/usr/local/opt/gettext/bin"
+```
+
+### Clone and run install script
 ```sh
 git clone https://github.com/wspurgin/dotfiles ~/.dotfiles
 ~/.dotfiles/bootstrap

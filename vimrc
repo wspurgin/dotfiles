@@ -29,6 +29,7 @@ Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-line'
@@ -220,6 +221,8 @@ map <Leader>ag :tabe<CR>:Ag<space>
 nnoremap <Leader>tn :call MoveToNextTab()<CR>
 nnoremap <Leader>tp :call MoveToPrevTab()<CR>
 
+map <Leader>f :FZF<CR>
+
 " }}}
 " Tabularize {{{
 " if exists(":Tabularize")
@@ -359,6 +362,10 @@ let g:titlecase_map_keys = 0
 nmap <leader>gt <Plug>Titlecase
 vmap <leader>gt <Plug>Titlecase
 nmap <leader>gT <Plug>TitlecaseLine
+" }}}
+
+" fzf {{{
+set rtp+=~/.fzf
 " }}}
 
 " Ctrl-P {{{

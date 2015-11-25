@@ -70,6 +70,7 @@ Plug 'zaiste/tmux.vim'
 Plug 'zorab47/vim-gams'
 Plug 'hdima/python-syntax'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'shmup/vim-sql-syntax'
 
 call plug#end()
 

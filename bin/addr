@@ -5,6 +5,6 @@
 
 ifconfig -a |
 grep 'inet ' |
-grep Bcast |
+egrep 'Bcast|broadcast' |
 awk '{ print $2 }' |
 cut -d : -f 2

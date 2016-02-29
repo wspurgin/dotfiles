@@ -14,6 +14,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'arecarn/crunch.vim'
 Plug 'arecarn/selection.vim'
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'bogado/file-line'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'chriskempson/base16-shell'
@@ -396,6 +397,8 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.linenr = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
+
+let g:airline_theme='wombat'
 
 " }}}
 " Invetigate.vim {{{

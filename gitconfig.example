@@ -1,6 +1,6 @@
 [user]
-  name = ${name}
-  email = ${email}
+  name = AUTHORNAME
+  email = AUTHOREMAIL
 [alias]
   st = status -s
   s = status -s
@@ -21,7 +21,7 @@
 
   # Remove branches that have already been merged with master
   # a.k.a. ‘delete merged’
-  dm = "!git branch --merged | ${grep_cmd} -v '\\*|next|master' | xargs ${xargs_args} git branch --delete"
+  dm = "!git branch --merged | egrep -v '\\*|next|master' | xargs XARGSFLAGS git branch --delete"
   ; up = "!git remote update -p; git merge --ff-only @{u}"
   loga = log --pretty=format:'%C(yellow)%h %C(red)%ad %C(blue)%<(7)%aN%C(green)%d %Creset%s' --date=short --abbrev-commit --graph
   lognc = log --pretty=format:'%h %ad %<(7)%aN%d %s' --date=short --abbrev-commit --graph
@@ -32,8 +32,9 @@
   # http://jerodsanto.net/2014/09/git-a-list-of-commits-on-one-branch-but-not-the-other
   contrast = log --left-right --graph --cherry-pick --oneline
 [color]
-  status = true
+  status = auto
   diff = auto
+  branch = auto
   ui = true
 [color "branch"]
   current = yellow reverse

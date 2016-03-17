@@ -8,6 +8,9 @@ if [ -t 1 ]; then
   # when the emulator cannot, lame. :(
   [ -f ~/.localrc-pre ] && source ~/.localrc-pre
 
+  # Remove non-alpha characters: darwin12.0 -> darwin
+  OS=$(echo $OSTYPE | sed "s/[^a-zA-Z-]//g")
+
   source ~/.bash/completions
   source ~/.bash/config
   source ~/.bash/aliases

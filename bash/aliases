@@ -1,7 +1,4 @@
 
-# Remove non-alpha characters: darwin10.0 -> darwin
-OS=$(echo $OSTYPE | sed "s/[^a-zA-Z-]//g")
-
 # some more ls aliases
 alias ll='ls -al'
 alias l='ls -lF'

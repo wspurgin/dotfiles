@@ -415,6 +415,9 @@ augroup vimrc
   " Enable spellchecking for gitcommits
   autocmd FileType gitcommit setlocal spell complete+=kspell
 
+  " Enable spellchecking for LaTex files
+  autocmd FileType tex setlocal spell complete+=kspell
+
   " Disable expandtab for php
   autocmd FileType php setlocal noexpandtab sw=2 ts=2
 

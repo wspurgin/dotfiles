@@ -284,10 +284,11 @@ command! WN wN      " converts ... :WN => :wN
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
-" }}}
 
 " Clear highlighting after a search
-nnoremap <silent> <ESC> :nohlsearch<CR><ESC>
+nnoremap  <Leader>/ :nohlsearch<CR>
+"
+" }}}
 
 " Plugin Configs
 " --------------

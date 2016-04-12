@@ -179,6 +179,7 @@ map <Leader>as :w<CR>:call RunAllSpecs()<CR>
 
 if has("gui_macvim")
   "don't set rspec_command"
+  let g:rspec_command = "bundle exec rspec {spec}"
 else
   let g:rspec_command = "Dispatch rspec {spec}"
 endif
@@ -444,7 +445,15 @@ augroup vimrc
   autocmd BufRead,BufNewFile *.cap setfiletype ruby
 
   " Setup vim-dispatch for RSpec files
-  autocmd BufRead,BufNewFile *_spec.rb let g:dispatch = 'rspec %'
+  autocmd BufRead,BufNewFile *_spec.rb let g:dispatch = "rspec expand('%:p')"
+
+  " Setup snytax highlighting for rspec files if rails is not loaded (in which
+  " case vim-rails will handle the highlighting for us)
+  if !exists('g:loaded_rails')
+
+    autocmd BufRead,BufNewFile *_spec.rb syn keyword rubyRspec describe context it its specify shared_context shared_examples shared_examples_for shared_context include_examples include_context it_should_behave_like it_behaves_like before after around subject fixtures controller_name helper_name scenario feature background given described_class violated pending expect expect_any_instance_of allow allow_any_instance_of double instance_double mock mock_model stub_model violated pending expect expect_any_instance_of allow allow_any_instance_of double instance_double mock mock_model stub_model
+    hi def link rubyRspec Function
+  endif
 
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?

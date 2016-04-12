@@ -28,6 +28,8 @@ Plug 'gabebw/vim-spec-runner'
 Plug 'garbas/vim-snipmate'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
+Plug 'hdima/python-syntax'
+Plug 'jeroenp/vim-xquery-syntax'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-update-rc' }
@@ -71,7 +73,6 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/renumber.vim'
 Plug 'zaiste/tmux.vim'
 Plug 'zorab47/vim-gams'
-Plug 'sentientmachine/Pretty-Vim-Python'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'shmup/vim-sql-syntax'
 
@@ -465,6 +466,11 @@ augroup END
 " Conoline {{{
 let g:conoline_use_colorscheme_default_normal=1
 let g:conoline_use_colorscheme_default_insert=1
+" }}}
+
+" Python Syntax {{{
+let python_version_2 = 1
+let python_highlight_all = 1
 " }}}
 
 " Backups {{{

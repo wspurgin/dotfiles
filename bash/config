@@ -7,8 +7,8 @@ export HISTCONTROL=ignoreboth
 export HISTSIZE=50000
 
 # set vim as the visual editor
-export VISUAL=vim
-export EDITOR=vim
+export VISUAL=nvim
+export EDITOR=nvim
 
 # set pager display ANSI colors
 export PAGER="less -FRSX"

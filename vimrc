@@ -47,7 +47,9 @@ Plug 'plasticboy/vim-markdown'
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
 Plug 'rking/ag.vim'
+Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdtree'
 Plug 'thomwiggers/vim-colors-solarized'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tomtom/tlib_vim'
@@ -84,7 +86,7 @@ if has("gui_running") || &t_Co >= 256
   let g:base16_shell_path = "~/.bash/base16-shell"
   let base16colorspace=256  " Access colors present in 256 colorspace
   colorscheme base16-eighties
-  set guifont=Inconsolata-g\ for\ Powerline:h11
+  set guifont=Inconsolata\ for\ Powerline\ Nerd\ Font\ Complete\ Mono:h11
 
   if &term =~ 'screen-256color' && exists('$TMUX')
     " disable Background Color Erase (BCE) so that color schemes

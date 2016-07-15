@@ -433,6 +433,9 @@ augroup vimrc
   " Use hash as R comment string
   autocmd FileType r set commentstring=#\ %s
 
+  " Use // as SQL comment string
+  autocmd FileType sql set commentstring=--\ %s
+
   " Doing entries as markdown
   autocmd BufRead /tmp/doing* setfiletype markdown
 

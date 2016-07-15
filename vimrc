@@ -182,7 +182,7 @@ if has("gui_macvim")
   "don't set rspec_command"
   let g:rspec_command = "bundle exec rspec {spec}"
 else
-  let g:rspec_command = "Dispatch rspec {spec}"
+  let g:rspec_command = "Dispatch bundle exec rspec {spec}"
 endif
 
 " Paste from system clipboard

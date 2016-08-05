@@ -444,7 +444,7 @@ augroup vimrc
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 
   " Use Ruby syntax on Arbre template files
-  autocmd BufRead,BufNewFile *.arb setfiletype ruby
+  autocmd BufRead,BufNewFile *.arb set filetype=ruby
 
   " Use Ruby syntax on Capistrano files
   autocmd BufRead,BufNewFile *.cap setfiletype ruby

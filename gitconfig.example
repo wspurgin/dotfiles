@@ -7,7 +7,7 @@
   c = commit -v
   co = checkout
   br = branch -v
-  b = branch -v
+  b = branch -v --sort="-authordate"
   d = diff --patience
   l = log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%<(7)%aN%Cgreen%d %Creset%s' --date=short -n 40 --abbrev-commit --graph --use-mailmap
   ll = log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%<(7)%aN%Cgreen%d %Creset%s' --date=short --abbrev-commit --graph --use-mailmap

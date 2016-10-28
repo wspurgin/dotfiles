@@ -34,3 +34,6 @@ if [ -t 1 ]; then
   [ -f ~/.localrc ] && source ~/.localrc
 
 fi
+
+export NVM_DIR="/Users/Will/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -125,14 +125,14 @@ fi
 export PATH=".git/safe/../../bin:${PATH}"
 
 
-PREFIX="/usr"
+AUTOJUMP_PREFIX="/usr"
 if command -v brew >/dev/null 2>&1; then
-  PREFIX=$(brew --prefix)
+  AUTOJUMP_PREFIX=$(brew --prefix)
 fi
 
 # Setup autojump, a faster way to navigate directories.
 if command -v autojump >/dev/null 2>&1; then
-  source "$PREFIX"/share/autojump/autojump.bash
+  source "$AUTOJUMP_PREFIX"/share/autojump/autojump.bash
 fi
 
 # Set up fzf fuzzy finder

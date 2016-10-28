@@ -452,6 +452,9 @@ augroup vimrc
   " Setup vim-dispatch for RSpec files
   autocmd BufRead,BufNewFile *_spec.rb let g:dispatch = "rspec expand('%:p')"
 
+  " Always treat .tex files as LaTeX.
+  autocmd BufRead,BufNewFile *.tex set filetype=tex
+
   " Setup snytax highlighting for rspec files if rails is not loaded (in which
   " case vim-rails will handle the highlighting for us)
   if !exists('g:loaded_rails')

@@ -85,6 +85,14 @@ xterm*|rxvt*)
     ;;
 esac
 
+if [[ $OS == "darwin" ]]; then
+  fixed_term_file="$HOME/.$TERM.ti"
+  if [[ ! -f "$fixed_term_file" ]]; then
+    infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $fixed_term_file
+  fi
+  export TERMINFO="$fixed_term_file"
+fi
+
 
 # ╺┳╸┏┳┓╻ ╻╻ ╻
 #  ┃ ┃┃┃┃ ┃┏╋┛

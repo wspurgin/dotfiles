@@ -89,7 +89,7 @@ set background=dark
 if has("gui_running") || &t_Co >= 256
   let g:base16_shell_path = "~/.bash/base16-shell"
   let base16colorspace=256  " Access colors present in 256 colorspace
-  colorscheme base16-eighties
+  colorscheme zenburn
   set guifont=Inconsolata\ for\ Powerline\ Nerd\ Font\ Complete\ Mono:h11
 
   if &term =~ 'screen-256color' && exists('$TMUX')

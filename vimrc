@@ -43,6 +43,7 @@ Plug 'ktonga/vim-follow-my-lead'
 Plug 'kylef/apiblueprint.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'miyakogi/conoline.vim'
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'noahfrederick/vim-hemisu'
 Plug 'noahfrederick/vim-noctu'
@@ -54,6 +55,7 @@ Plug 'reedes/vim-wordy'
 Plug 'rking/ag.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/syntastic'
+Plug 'shmup/vim-sql-syntax'
 Plug 'thomwiggers/vim-colors-solarized'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tomtom/tlib_vim'
@@ -76,8 +78,6 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/renumber.vim'
 Plug 'zaiste/tmux.vim'
 Plug 'zorab47/vim-gams'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'shmup/vim-sql-syntax'
 
 call plug#end()
 
@@ -484,6 +484,11 @@ augroup END
 " Conoline {{{
 let g:conoline_use_colorscheme_default_normal=1
 let g:conoline_use_colorscheme_default_insert=1
+" }}}
+
+" Syntastic {{{
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 " }}}
 
 " Python Syntax {{{

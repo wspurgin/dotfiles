@@ -74,6 +74,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-rmarkdown'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/renumber.vim'
 Plug 'zaiste/tmux.vim'
@@ -422,6 +425,7 @@ augroup vimrc
   " Markdown specifics: enable spellchecking and hard wrap at 80 characters
   autocmd FileType markdown setlocal spell nolist textwidth=80 complete+=kspell
   autocmd FileType mkd      setlocal spell nolist textwidth=80 complete+=kspell
+  autocmd FileType rmd      setlocal spell nolist textwidth=80 complete+=kspell
 
   " Enable spellchecking for gitcommits
   autocmd FileType gitcommit setlocal spell complete+=kspell

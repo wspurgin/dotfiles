@@ -307,10 +307,21 @@ vnoremap <F1> <ESC>
 " Clear highlighting after a search
 nnoremap  <Leader>/ :nohlsearch<CR>
 "
+
+" Insert mode movement
+inoremap <C-e> <C-o>$
+inoremap <C-a> <C-o>^
 " }}}
 
 " Plugin Configs
 " --------------
+
+"Builtin Customizations {{{
+" Markdown
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby', 'sql']
+let g:vim_markdown_new_list_item_indent = 2
+
+"}}}
 
 " Tabularize {{{
 " if exists(":Tabularize")
@@ -379,7 +390,11 @@ let g:syntastic_check_on_open=1
 
 let g:syntastic_check_on_wq = 0
 
-" let g:syntastic_ruby_checkers = ['rubylint', 'mri']
+let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+" }}}
+
+" Vim-Ruby {{{
+let g:ruby_indent_access_modifier_style = 'indent'
 " }}}
 
 " Titlecase {{{

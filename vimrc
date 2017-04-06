@@ -92,9 +92,15 @@ syntax enable
 set background=dark
 
 if has("gui_running") || &t_Co >= 256
-  let g:base16_shell_path = "~/.bash/base16-shell"
-  let base16colorspace=256  " Access colors present in 256 colorspace
-  colorscheme zenburn
+  let g:seoul256_background = 236
+  let g:seoul256_light_background = 256
+
+  let &t_8f = "[38;2;%lu;%lu;%lum"
+  let &t_8b = "[48;2;%lu;%lu;%lum"
+
+  " set termguicolors
+
+  colorscheme seoul256
   set guifont=Inconsolata\ for\ Powerline\ Nerd\ Font\ Complete\ Mono:h11
 
   if &term =~ 'screen-256color' && exists('$TMUX')

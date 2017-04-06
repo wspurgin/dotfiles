@@ -31,9 +31,10 @@ Plug 'honza/vim-snippets'
 Plug 'hdima/python-syntax'
 Plug 'jeroenp/vim-xquery-syntax'
 Plug 'joker1007/vim-ruby-heredoc-syntax', { 'for': 'ruby' }
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-update-rc' }
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/seoul256.vim'
+Plug 'junegunn/vim-peekaboo'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-line'

@@ -14,12 +14,12 @@ session_exists() {
 }
 
 create_detached_session() {
-  (TMUX='' tmux new-session -Ad -s "$session_name" -c "$PWD")
+  (TMUX='' tmux new-session -A -d -s "$session_name" -c "$PWD")
 }
 
 create_if_needed_and_attach() {
   if not_in_tmux; then
-    tmux new-session -As "$session_name" -c "$PWD"
+    tmux new-session -A -s "$session_name" -c "$PWD"
   else
     if ! session_exists; then
       create_detached_session

@@ -99,7 +99,7 @@ if has("gui_running") || &t_Co >= 256
   let &t_8f = "[38;2;%lu;%lu;%lum"
   let &t_8b = "[48;2;%lu;%lu;%lum"
 
-  " set termguicolors
+  set termguicolors
 
   colorscheme seoul256
   set guifont=Inconsolata\ for\ Powerline\ Nerd\ Font\ Complete\ Mono:h11

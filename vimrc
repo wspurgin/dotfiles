@@ -446,9 +446,12 @@ let g:investigate_command_for_ruby="^i!ri --format ansi ^s"
 augroup vimrc
   autocmd!
 
+  let g:pandoc#formatting#mode = "h"
+
   " Markdown specifics: enable spellchecking and hard wrap at 80 characters
   autocmd FileType markdown setlocal spell nolist textwidth=80 complete+=kspell
   autocmd FileType mkd      setlocal spell nolist textwidth=80 complete+=kspell
+  autocmd FileType pandoc   setlocal spell nolist textwidth=80 complete+=kspell
   autocmd FileType rmd      setlocal spell nolist textwidth=80 complete+=kspell
 
   " Enable spellchecking for gitcommits

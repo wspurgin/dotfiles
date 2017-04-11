@@ -44,6 +44,7 @@ Plug 'ktonga/vim-follow-my-lead'
 Plug 'kylef/apiblueprint.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'miyakogi/conoline.vim'
+Plug 'morhetz/gruvbox'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'noahfrederick/vim-hemisu'
@@ -96,10 +97,12 @@ if has("gui_running") || &t_Co >= 256
   let g:seoul256_background = 236
   let g:seoul256_light_background = 256
 
-  let &t_8f = "[38;2;%lu;%lu;%lum"
-  let &t_8b = "[48;2;%lu;%lu;%lum"
+  if(exists('+termguicolors'))
+    let &t_8f = "[38;2;%lu;%lu;%lum"
+    let &t_8b = "[48;2;%lu;%lu;%lum"
 
-  set termguicolors
+    set termguicolors
+  endif
 
   colorscheme seoul256
   set guifont=Inconsolata\ for\ Powerline\ Nerd\ Font\ Complete\ Mono:h11

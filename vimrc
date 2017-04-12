@@ -472,6 +472,9 @@ augroup vimrc
   " Use // as SQL comment string
   autocmd FileType sql set commentstring=--\ %s
 
+  " Use # for pandoc (i.e. markdown files)
+  autocmd FileType pandoc setlocal commentstring=#\ %s
+
   " Doing entries as markdown
   autocmd BufRead /tmp/doing* setfiletype markdown
 

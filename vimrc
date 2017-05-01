@@ -221,10 +221,14 @@ map <Leader>y "+y
 nnoremap <leader>fw :FixLastSpellingError<CR>
 
 " TODO
-" copy current filename into system clipboard - mnemonic: (c)urrent(f)ilename
-" this is helpful to paste someone the path you're looking at
-nnoremap <silent> <Leader>cf :let @* = expand("%:~")<CR>
-nnoremap <silent> <Leader>cn :let @* = expand("%:t")<CR>
+" yank current filename - mnemonic: (c)urrent(f)ilename
+nnoremap <silent> <Leader>cf :let @" = expand("%:~")<CR>
+
+" yank current file basename - mnemonic: (c)urrent(b)asename
+nnoremap <silent> <Leader>cn :let @" = expand("%:t")<CR>
+
+" yank current file basename striped of extension - mnemonic: (c)urrent(n)ame
+nnoremap <silent> <Leader>cn :let @" = expand("%:t:r")<CR>
 
 " Leader shortcuts for Rails commands
 " map <Leader>m :Rmodel
@@ -552,7 +556,6 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let python_version_2 = 1
 let python_highlight_all = 1
 " }}}
-
 " Backups {{{
 set nobackup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp

@@ -58,7 +58,7 @@ Plug 'rizzatti/dash.vim'
 Plug 'rking/ag.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/syntastic'
-Plug 'shmup/vim-sql-syntax'
+" Plug 'shmup/vim-sql-syntax'
 Plug 'thomwiggers/vim-colors-solarized'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tomtom/tlib_vim'
@@ -85,6 +85,9 @@ Plug 'vim-scripts/renumber.vim'
 Plug 'vim-scripts/MatlabFilesEdition'
 Plug 'zaiste/tmux.vim'
 Plug 'zorab47/vim-gams'
+
+Plug 'lifepillar/pgsql.vim'
+Plug 'lifepillar/vim-cheat40'
 
 call plug#end()
 
@@ -143,7 +146,11 @@ set title                     " change the terminal's title
 set wildmenu                  " visual autocomplete for command menu
 set wildignore=*.swp          " ignore swp files in completion
 set list                      " show whitespace chars
-set listchars=tab:»\ ,trail:·  " display tabs as » and trailing spaces as ·
+set listchars=                " Reset listchars
+set listchars+=tab:»\         " Symbols to use for invisible characters
+set listchars+=trail:·        " trailing whitespace
+set listchars+=nbsp:•         " non-breaking space
+set listchars+=extends:→      " line continues past screen (to the right)
 set lazyredraw                " redraw only when we need to
 set modeline                  " always show modeline
 set ttyfast                   " Send more characters for redraws
@@ -199,7 +206,7 @@ if has("gui_macvim")
   "don't set rspec_command"
   let g:rspec_command = "bundle exec rspec {spec}"
 else
-  let g:rspec_command = "Dispatch bundle exec rspec {spec}"
+  let g:rspec_command = "Dispatch bundle exec rspec --format=progress {spec}"
 endif
 
 " Paste from system clipboard
@@ -398,6 +405,8 @@ let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 
 " Vim-Ruby {{{
 let g:ruby_indent_access_modifier_style = 'indent'
+
+let ruby_spellcheck_strings = 1
 " }}}
 
 " Titlecase {{{
@@ -421,6 +430,9 @@ if executable('ag')
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
+  let &grepprg = 'ag --nogroup --nocolor --column'
+else
+  let &grepprg = 'grep -rn $* *'
 endif
 
 " }}}
@@ -449,6 +461,12 @@ let g:investigate_command_for_ruby="^i!ri --format ansi ^s"
 augroup vimrc
   autocmd!
 
+  " Automatic rename of tmux window
+  if exists('$TMUX') && !exists('$NORENAME')
+    au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
+    au VimLeave * call system('tmux set-window automatic-rename on')
+  endif
+
   let g:pandoc#formatting#mode = "h"
 
   " Markdown specifics: enable spellchecking and hard wrap at 80 characters
@@ -469,8 +487,10 @@ augroup vimrc
   " Use hash as R comment string
   autocmd FileType r set commentstring=#\ %s
 
-  " Use // as SQL comment string
-  autocmd FileType sql set commentstring=--\ %s
+  " Use -- as SQL comment string
+  autocmd FileType sql setlocal commentstring=--\ %s
+
+  let g:sql_type_default = 'pgsql'
 
   " Use # for pandoc (i.e. markdown files)
   autocmd FileType pandoc setlocal commentstring=#\ %s
@@ -502,7 +522,7 @@ augroup vimrc
   endif
 
   " Make ?s part of words
-  autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
+  autocmd FileType ruby,eruby,yaml setlocal iskeyword+=? spell
 
   autocmd ColorScheme * highlight clear SignColumn
 
@@ -556,6 +576,8 @@ augroup vimrcEx
     \ endif
 
 augroup END
+
+command! Scratch new +setlocal\ buftype=nofile\ bufhidden=wipe\ ft=ruby\ noswapfile
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0

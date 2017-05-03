@@ -221,11 +221,11 @@ map <Leader>y "+y
 nnoremap <leader>fw :FixLastSpellingError<CR>
 
 " TODO
-" yank current filename - mnemonic: (c)urrent(f)ilename
-nnoremap <silent> <Leader>cf :let @" = expand("%:~")<CR>
+" yank path to current file - mnemonic: (c)urrent-file(p)ath
+nnoremap <silent> <Leader>cp :let @" = expand("%:~")<CR>
 
-" yank current file basename - mnemonic: (c)urrent(b)asename
-nnoremap <silent> <Leader>cn :let @" = expand("%:t")<CR>
+" yank current file basename - mnemonic: (c)urrent(f)ilename
+nnoremap <silent> <Leader>cf :let @" = expand("%:t")<CR>
 
 " yank current file basename striped of extension - mnemonic: (c)urrent(n)ame
 nnoremap <silent> <Leader>cn :let @" = expand("%:t:r")<CR>

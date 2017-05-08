@@ -15,6 +15,7 @@
   rs = rebase --skip
   rn = rebase next
   m = merge --ff-only
+  rip = remote update --prune
 
   # list tracked files that should have been ignored
   lti = ls-files --cached --ignored --exclude-standard

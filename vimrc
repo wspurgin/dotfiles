@@ -17,74 +17,71 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bogado/file-line'
 Plug 'chrisbra/vim-diff-enhanced'
-Plug 'chriskempson/base16-shell'
-Plug 'chriskempson/base16-vim'
+" Plug 'chriskempson/base16-shell'
+" Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-titlecase'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'drmikehenry/vim-fontsize'
-Plug 'ecomba/vim-ruby-refactoring'
-Plug 'gabebw/vim-spec-runner'
+Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
+Plug 'gabebw/vim-spec-runner', { 'for': 'ruby' }
 Plug 'garbas/vim-snipmate'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
-Plug 'hdima/python-syntax'
+Plug 'hdima/python-syntax', { 'for': 'python' }
 Plug 'jeroenp/vim-xquery-syntax'
 Plug 'joker1007/vim-ruby-heredoc-syntax', { 'for': 'ruby' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-update-rc' }
-Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim', { 'on': ['Goyo'] }
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-user'
-Plug 'kchmck/vim-coffee-script'
+Plug 'kchmck/vim-coffee-script', { 'for': ['coffee', 'ruby'] }
 Plug 'ktonga/vim-follow-my-lead'
 Plug 'kylef/apiblueprint.vim'
-Plug 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'miyakogi/conoline.vim'
 Plug 'morhetz/gruvbox'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'noahfrederick/vim-hemisu'
-Plug 'noahfrederick/vim-noctu'
-Plug 'pangloss/vim-javascript'
+Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
+Plug 'pangloss/vim-javascript', { 'for': ['ruby', 'javascript', 'markdown'] }
 Plug 'pbrisbin/vim-mkdir'
-Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown', { 'for': ['pandoc', 'markdown'] }
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
 Plug 'rizzatti/dash.vim'
 Plug 'rking/ag.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic' ", { 'on': ['SyntasticCheck'] }
 " Plug 'shmup/vim-sql-syntax'
-Plug 'thomwiggers/vim-colors-solarized'
-Plug 'thoughtbot/vim-rspec'
+Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
 Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-haml'
-Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown', { 'for': ['pandoc', 'markdown'] }
 Plug 'tpope/vim-ragtag'
-Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'vim-pandoc/vim-rmarkdown'
-Plug 'vim-ruby/vim-ruby'
+Plug 'vim-pandoc/vim-pandoc', { 'for': ['pandoc', 'markdown'] }
+Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': ['pandoc', 'markdown'] }
+Plug 'vim-pandoc/vim-rmarkdown', { 'for': ['pandoc', 'markdown'] }
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'vim-scripts/renumber.vim'
-Plug 'vim-scripts/MatlabFilesEdition'
+Plug 'vim-scripts/MatlabFilesEdition', { 'for': 'matlab' }
 Plug 'zaiste/tmux.vim'
-Plug 'zorab47/vim-gams'
+Plug 'zorab47/vim-gams', { 'for': 'gams' }
 
 Plug 'lifepillar/pgsql.vim'
 Plug 'lifepillar/vim-cheat40'
@@ -404,7 +401,7 @@ let g:syntastic_check_on_open=1
 
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+let g:syntastic_ruby_checkers = ['mri']
 " }}}
 
 " Vim-Ruby {{{

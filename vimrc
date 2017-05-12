@@ -469,6 +469,7 @@ augroup vimrc
   endif
 
   let g:pandoc#formatting#mode = "h"
+  let g:pandoc#modules#disabled = ['chdir']
 
   " Markdown specifics: enable spellchecking and hard wrap at 80 characters
   autocmd FileType markdown setlocal spell nolist textwidth=80 complete+=kspell

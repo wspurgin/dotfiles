@@ -48,6 +48,7 @@ Plug 'miyakogi/conoline.vim'
 Plug 'morhetz/gruvbox'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
+Plug 'neomake/neomake'
 Plug 'pangloss/vim-javascript', { 'for': ['ruby', 'javascript', 'markdown'] }
 Plug 'pbrisbin/vim-mkdir'
 Plug 'plasticboy/vim-markdown', { 'for': ['pandoc', 'markdown'] }
@@ -56,7 +57,7 @@ Plug 'reedes/vim-wordy'
 Plug 'rizzatti/dash.vim'
 Plug 'rking/ag.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'scrooloose/syntastic' ", { 'on': ['SyntasticCheck'] }
+" Plug 'scrooloose/syntastic' ", { 'on': ['SyntasticCheck'] }
 " Plug 'shmup/vim-sql-syntax'
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
 Plug 'tomtom/tlib_vim'
@@ -81,6 +82,7 @@ Plug 'vim-pandoc/vim-rmarkdown', { 'for': ['pandoc', 'markdown'] }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'vim-scripts/renumber.vim'
 Plug 'vim-scripts/MatlabFilesEdition', { 'for': 'matlab' }
+Plug 'vimwiki/vimwiki'
 Plug 'zaiste/tmux.vim'
 Plug 'zorab47/vim-gams', { 'for': 'gams' }
 
@@ -328,6 +330,8 @@ inoremap <C-a> <C-o>^
 " Plugin Configs
 " --------------
 
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
 let g:goyo_width = 82
 function! s:goyo_enter()
   silent !tmux set status off
@@ -405,26 +409,26 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 " }}}
 " Syntastic {{{
-let g:syntastic_ignore_files = ['.java$']
+" let g:syntastic_ignore_files = ['.java$']
 
 " mark syntax errors with :signs
-let g:syntastic_enable_signs=1
+" let g:syntastic_enable_signs=1
 
 " automatically jump to the error when saving the file
-let g:syntastic_auto_jump=0
+" let g:syntastic_auto_jump=0
 
 " show the error list automatically
-let g:syntastic_auto_loc_list=0
+" let g:syntastic_auto_loc_list=0
 
 " don't care about warnings
 " let g:syntastic_quiet_messages = {'level': 'warnings'}
 
 " configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
+" let g:syntastic_check_on_open=1
 
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_check_on_wq = 0
 
-let g:syntastic_ruby_checkers = ['mri']
+" let g:syntastic_ruby_checkers = ['mri']
 " }}}
 
 " Vim-Ruby {{{
@@ -485,6 +489,10 @@ let g:investigate_command_for_ruby="^i!ri --format ansi ^s"
 augroup vimrc
   autocmd!
 
+  " Neomake
+  autocmd! BufWritePost * Neomake
+  let g:neomake_ruby_enabled_makers = ["rubocop", "mri"]
+
   " Automatic rename of tmux window
   if exists('$TMUX') && !exists('$NORENAME')
     au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
@@ -505,6 +513,8 @@ augroup vimrc
 
   " Enable spellchecking for LaTex files and hard wrap
   autocmd FileType tex setlocal spell nolist textwidth=80 complete+=kspell
+
+  autocmd FileType journal setlocal spell nolist textwidth=80 complete+=kspell
 
   " Disable expandtab for php
   autocmd FileType php setlocal noexpandtab sw=2 ts=2
@@ -538,6 +548,10 @@ augroup vimrc
   " Always treat .tex files as LaTeX.
   autocmd BufRead,BufNewFile *.tex set filetype=tex
 
+  " Add journal filetype
+  autocmd BufRead,BufNewFile *.jrnl set filetype=journal
+  autocmd BufRead,BufNewFile *.journal set filetype=journal
+
   " Setup snytax highlighting for rspec files if rails is not loaded (in which
   " case vim-rails will handle the highlighting for us)
   if !exists('g:loaded_rails')
@@ -569,8 +583,8 @@ let g:conoline_use_colorscheme_default_insert=1
 " }}}
 
 " Syntastic {{{
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+" let g:syntastic_cpp_compiler = 'clang++'
+" let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 " }}}
 
 " Python Syntax {{{

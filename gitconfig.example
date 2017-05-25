@@ -27,6 +27,9 @@
   loga = log --pretty=format:'%C(yellow)%h %C(red)%ad %C(blue)%<(7)%aN%C(green)%d %Creset%s' --date=short --abbrev-commit --graph
   lognc = log --pretty=format:'%h %ad %<(7)%aN%d %s' --date=short --abbrev-commit --graph
 
+  # Git push set upstream (initial push to remote)
+  pup = "!git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)"
+
   # List contributors with number of commits
   contributors = shortlog --summary --numbered
 

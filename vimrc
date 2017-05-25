@@ -35,6 +35,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-update-rc' }
 Plug 'junegunn/goyo.vim', { 'on': ['Goyo'] }
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/seoul256.vim'
+" Plug 'junegunn/vim-journal', { 'for': 'journal' }
 Plug 'junegunn/vim-peekaboo'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
@@ -192,6 +193,9 @@ map <Leader>n :tabe ~/todo.md<CR>
 
 " edit global improvement / tool sharpening list
 map <Leader>i :tabe ~/tool_sharpening.md<CR>
+
+" edit standup doc
+" map <Leader>w :tabe ~/standup.jrnl<CR>
 
 " Execute Dispatch for current file
 map <Leader>d :w<CR>:Dispatch<CR>
@@ -551,6 +555,8 @@ augroup vimrc
   " Add journal filetype
   autocmd BufRead,BufNewFile *.jrnl set filetype=journal
   autocmd BufRead,BufNewFile *.journal set filetype=journal
+
+  autocmd BufRead,BufNewFile ~/vimwiki* set filetype=vimwiki
 
   " Setup snytax highlighting for rspec files if rails is not loaded (in which
   " case vim-rails will handle the highlighting for us)

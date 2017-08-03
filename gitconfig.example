@@ -16,6 +16,8 @@
   rn = rebase next
   m = merge --ff-only
   rip = remote update --prune
+  fp = push --force-with-lease
+  ca = commit --amend
 
   # list tracked files that should have been ignored
   lti = ls-files --cached --ignored --exclude-standard

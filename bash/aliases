@@ -124,12 +124,19 @@ function pusher {
 }
 
 function notify {
-  pusher "$@"
+
+  if eval "$@"; then
+    message="$* completed"
+  else
+    message="$* failed"
+  fi
+
+  pusher "$message"
 
   if [[ $OS == "darwin" ]]; then
-    say "$*"
+    say "$message"
   else
-    notify-send "$(pwd)" "$@"
+    notify-send "$(pwd)" "$message"
   fi
 }
 

@@ -31,7 +31,7 @@ Plug 'honza/vim-snippets'
 Plug 'hdima/python-syntax', { 'for': 'python' }
 Plug 'jeroenp/vim-xquery-syntax'
 Plug 'joker1007/vim-ruby-heredoc-syntax', { 'for': 'ruby' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-update-rc' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-update-rc --key-bindings --completion' }
 Plug 'junegunn/goyo.vim', { 'on': ['Goyo'] }
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/seoul256.vim'
@@ -80,7 +80,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'vim-pandoc/vim-pandoc', { 'for': ['pandoc', 'markdown'] }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': ['pandoc', 'markdown'] }
 Plug 'vim-pandoc/vim-rmarkdown', { 'for': ['pandoc', 'markdown'] }
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby', 'commit': '84565856e6965144e1c34105e03a7a7e87401acb' }
 Plug 'vim-scripts/renumber.vim'
 Plug 'vim-scripts/MatlabFilesEdition', { 'for': 'matlab' }
 Plug 'vimwiki/vimwiki'

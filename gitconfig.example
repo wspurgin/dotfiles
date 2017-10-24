@@ -56,18 +56,18 @@
   changed = blue
   untracked = cyan
 [diff]
-  renamelimit = 0
+  renameLimit = 0
   renames = copies
 [help]
   autocorrect = 1
 [core]
-  excludesfile = ${HOME}/.gitignore
+  excludesFile = ~/.gitignore
   pager = less -FRSX
 [init]
-  templatedir = ~/.git_template
+  templateDir = ~/.git_template
 [push]
   default = simple
 [merge]
   tool = vimdiff
 [mailmap]
-  file = ${HOME}/.mailmap
+  file = ~/.mailmap

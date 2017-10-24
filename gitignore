@@ -4,3 +4,4 @@
 .env
 *~
 /.ruby-version
+**/vendor/bundle

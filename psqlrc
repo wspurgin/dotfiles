@@ -1,0 +1,39 @@
+-- set the default pager to pspg, default save no columns
+\setenv PAGER 'pspg -bX --no-mouse -c 0'
+
+-- change the pager with :x and :xx
+\set x '\\setenv PAGER less'
+\set xx '\\setenv PAGER \'pspg -bX --no-mouse\''
+
+-- Don't display the commands in this block on startup
+\set QUIET ON
+
+\set PROMPT1 '%/%[%033[0m%]% # '
+\set PAGER OFF
+\set HISTFILE ~/.psql/history- :DBNAME
+\set HISTSIZE 50000
+\set HISTCONTROL ignoredups
+\set ECHO_HIDDEN ON
+\set COMP_KEYWORD_CASE upper
+
+-- Show how long each query takes
+\timing
+
+\encoding unicode
+
+-- Use best available output format
+--\x auto -- turn off expanded display
+\set VERBOSITY verbose
+
+-- show the word "NULL" if no value
+\pset null 'NULL'
+\pset border 2
+
+\set QUIET OFF
+
+-- \echo 'Administrative queries:\n'
+-- \echo '\t\t\t:dbsize\t\t-- Database Size'
+-- \echo '\t\t\t:tablesize\t-- Tables Size'
+
+\set dbsize 'SELECT datname, pg_size_pretty(pg_database_size(datname)) db_size FROM pg_database ORDER BY db_size;'
+\set tablesize 'SELECT nspname || \'.\' || relname AS \"relation\", pg_size_pretty(pg_relation_size(C.oid)) AS "size" FROM pg_class C LEFT JOIN pg_namespace N ON (N.oid = C.relnamespace) WHERE nspname NOT IN (\'pg_catalog\', \'information_schema\') ORDER BY pg_relation_size(C.oid) DESC LIMIT 40;'

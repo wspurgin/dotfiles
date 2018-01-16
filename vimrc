@@ -491,6 +491,8 @@ augroup vimrc
   autocmd! BufWritePost * Neomake
   let g:neomake_ruby_enabled_makers = ["rubocop", "mri"]
 
+  let g:neomake_typescript_enabled_makers = ["tslint"]
+
   " Automatic rename of tmux window
   if exists('$TMUX') && !exists('$NORENAME')
     au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
@@ -505,6 +507,7 @@ augroup vimrc
   autocmd FileType mkd      setlocal spell nolist textwidth=80 complete+=kspell
   autocmd FileType pandoc   setlocal spell nolist textwidth=80 complete+=kspell
   autocmd FileType rmd      setlocal spell nolist textwidth=80 complete+=kspell
+  autocmd FileType vimwiki  setlocal spell nolist textwidth=80 complete+=kspell
 
   " Enable spellchecking for gitcommits
   autocmd FileType gitcommit setlocal spell complete+=kspell

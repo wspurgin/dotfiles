@@ -4,30 +4,26 @@ Configuration of my system the way I like it.
 
 ## Installation
 
-### NOTE for OS X users
-This implementation requires that you have the GNU gettext tool `envsubst` In
-order to create a gitconfig for your user. On OS X these are not included by
-default. Before running the below installation instructions, make sure you
-install and add the tools to your path:
-
-```sh
-brew install gettext && export PATH=$PATH":/usr/local/opt/gettext/bin"
-```
-
 ### Clone and run install script
 ```sh
 git clone https://github.com/wspurgin/dotfiles ~/.dotfiles
 ~/.dotfiles/bootstrap
 ```
 
-## External Apps
+## Required and Optional External Apps
 
-Optional applications which enhance bash, vim, etc.
+Required and Optional applications which enhance bash, vim, etc.
 
+Required:
+- silversearcher-ag (a.k.a. sg)
+  - This is only required if you intend to use all the `fzf` configuration used
+    here. Otherwise you'll have to remove or change the env variable
+    `FZF_DEFAULT_COMMAND` in `bash/config`.
+
+Optional
 - autojump
 - coreutils (dircolors)
 - exuberant-ctags
-- silversearcher-ag
 
 ```
 sudo apt-get install silversearcher-ag exuberant-ctags coreutils autojump

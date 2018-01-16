@@ -400,12 +400,6 @@ let g:vim_markdown_new_list_item_indent = 2
   nmap <Leader>aw :Tabularize whitespace<CR>
   vmap <Leader>aw :Tabularize whitespace<CR>
 
-  call plug#load('tabular')
-  AddTabularPattern! whitespace / \+\zs/l1r0
-
-  " Align ruby blocks, but ignore string interpolation
-  AddTabularPattern! ruby_block /[^#]\@<={/
-
 " endif
 " }}}
 " NERD Tree {{{

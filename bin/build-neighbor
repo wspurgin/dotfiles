@@ -1,0 +1,76 @@
+build_project () {
+  local project=$1
+  local branch=$2
+  local debug=$3
+  local is_git_project=0
+
+  if [ -d "$project/.git" ]; then
+    is_git_project=1
+  fi
+
+  cd "$project"
+  if [ $is_git_project -eq 1 ]; then
+    if [ $debug -eq 1 ]; then
+      echo "Git repo detected in '$project'"
+    fi
+
+    echo $(git fetch &&
+      git checkout "$branch" &&
+      git pull)
+  fi
+
+  # TODO add argument to pass custom build call.
+  mvn clean install
+}
+
+help () {
+  cat <<EOF
+  build-neighbor - build a neighbor project that's adjacent to current directory
+
+  USAGE: build-neighbor [-h|--help|-d|--debug] PROJECT_DIR [BRANCH]
+
+  NOTE only one option is allowed at a time
+
+  -h, --help : show this help message
+  -d, --debug : show output from build process
+
+  PROJECT_DIR : the name of the adjacent directory to build
+  [BRANCH] : the optional branch to build
+EOF
+}
+
+if test "$*" != ''; then
+  debug=0
+  project=""
+  branch=""
+  if [ "$1" == '-h' ] || [ "$1" == '--help' ]; then
+    help
+    exit 0
+  elif [ "$1" == '-d' ] || [ "$1" == '--debug' ]; then
+    debug=1
+  fi
+
+  if [ $debug -eq 1 ]; then # project should be second argument
+    echo "Debug enabled"
+    project="../$2"
+    branch="$3"
+  else
+    project="../$1"
+    branch="$2"
+  fi
+
+  if [ ! -d "$project" ]; then
+    echo "'$project' is not a directory! Did you mispell the directory name?"
+    exit 1
+  fi
+
+  # Use master as the defualt branch if none provided.
+  # build_project will handle if the directory is not a git project.
+  if [ "$branch" == '' ]; then
+    branch="master"
+  fi
+
+  build_project "$project" "$branch" "$debug"
+else
+  echo "No arguments provided. Doing nothing."
+fi

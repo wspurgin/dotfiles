@@ -16,9 +16,9 @@ build_project () {
       echo "Git repo detected in '$project'"
     fi
 
-    echo $(git fetch &&
+    git fetch &&
       git checkout "$branch" &&
-      git pull)
+      git pull
   fi
 
   # TODO add argument to pass custom build call.

@@ -23,6 +23,7 @@ Plug 'christoomey/vim-titlecase'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'drmikehenry/vim-fontsize'
+Plug 'fatih/vim-go'
 Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
 Plug 'gabebw/vim-spec-runner', { 'for': 'ruby' }
 Plug 'garbas/vim-snipmate'
@@ -334,7 +335,7 @@ inoremap <C-a> <C-o>^
 " Plugin Configs
 " --------------
 
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.wiki'}]
 
 let g:goyo_width = 82
 function! s:goyo_enter()
@@ -553,7 +554,7 @@ augroup vimrc
   autocmd BufRead,BufNewFile *.jrnl set filetype=journal
   autocmd BufRead,BufNewFile *.journal set filetype=journal
 
-  autocmd BufRead,BufNewFile ~/vimwiki* set filetype=vimwiki
+  autocmd BufRead,BufNewFile *.wiki set filetype=vimwiki
 
   " Setup snytax highlighting for rspec files if rails is not loaded (in which
   " case vim-rails will handle the highlighting for us)

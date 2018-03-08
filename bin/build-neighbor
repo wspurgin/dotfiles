@@ -4,6 +4,7 @@ build_project () {
   local project=$1
   local branch=$2
   local debug=$3
+  local skiptests=$4
   local is_git_project=0
 
   if [ -d "$project/.git" ]; then
@@ -22,7 +23,11 @@ build_project () {
   fi
 
   # TODO add argument to pass custom build call.
-  mvn clean install
+  if [ $skiptests -eq 1 ]; then
+    mvn clean install -DskipTests
+  else
+    mvn clean install
+  fi
 }
 
 help () {
@@ -45,15 +50,22 @@ if test "$*" != ''; then
   debug=0
   project=""
   branch=""
+  skiptests=0
+
   if [ "$1" == '-h' ] || [ "$1" == '--help' ]; then
     help
     exit 0
   elif [ "$1" == '-d' ] || [ "$1" == '--debug' ]; then
     debug=1
+  elif [ "$1" == '--skiptests' ]; then
+    skiptests=1
   fi
 
   if [ $debug -eq 1 ]; then # project should be second argument
     echo "Debug enabled"
+    project="../$2"
+    branch="$3"
+  elif [ $skiptests -eq 1 ]; then # project should be second argument
     project="../$2"
     branch="$3"
   else
@@ -72,7 +84,7 @@ if test "$*" != ''; then
     branch="master"
   fi
 
-  build_project "$project" "$branch" "$debug"
+  build_project "$project" "$branch" "$debug" "$skiptests"
 else
   echo "No arguments provided. Doing nothing."
 fi

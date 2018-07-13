@@ -139,4 +139,8 @@ function notify {
   fi
 }
 
+function randln {
+  head -$(((((${RANDOM} << 15) + ${RANDOM}) % `wc -l < $1`) + 1)) $1 | tail -1
+}
+
 # vim: syntax=sh

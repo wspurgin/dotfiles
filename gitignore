@@ -5,3 +5,5 @@
 *~
 /.ruby-version
 **/vendor/bundle
+.lib-src
+.ropeproject

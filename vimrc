@@ -17,11 +17,10 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bogado/file-line'
 Plug 'chrisbra/vim-diff-enhanced'
-" Plug 'chriskempson/base16-shell'
-" Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-titlecase'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'derekwyatt/vim-scala'
 Plug 'drmikehenry/vim-fontsize'
 Plug 'fatih/vim-go'
 Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
@@ -33,10 +32,10 @@ Plug 'hdima/python-syntax', { 'for': 'python' }
 Plug 'jeroenp/vim-xquery-syntax'
 Plug 'joker1007/vim-ruby-heredoc-syntax', { 'for': 'ruby' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-update-rc --key-bindings --completion' }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim', { 'on': ['Goyo'] }
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/seoul256.vim'
-" Plug 'junegunn/vim-journal', { 'for': 'journal' }
 Plug 'junegunn/vim-peekaboo'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
@@ -53,19 +52,20 @@ Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 Plug 'neomake/neomake'
 Plug 'pangloss/vim-javascript', { 'for': ['ruby', 'javascript', 'markdown'] }
 Plug 'pbrisbin/vim-mkdir'
+Plug 'python-mode/python-mode', { 'for': 'python' }
 Plug 'plasticboy/vim-markdown', { 'for': ['pandoc', 'markdown'] }
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
 Plug 'rizzatti/dash.vim'
 Plug 'rking/ag.vim'
 Plug 'ryanoasis/vim-devicons'
-" Plug 'scrooloose/syntastic' ", { 'on': ['SyntasticCheck'] }
-" Plug 'shmup/vim-sql-syntax'
+Plug 'scrooloose/nerdtree'
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
 Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -81,7 +81,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'vim-pandoc/vim-pandoc', { 'for': ['pandoc', 'markdown'] }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': ['pandoc', 'markdown'] }
 Plug 'vim-pandoc/vim-rmarkdown', { 'for': ['pandoc', 'markdown'] }
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby', 'commit': '84565856e6965144e1c34105e03a7a7e87401acb' }
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'vim-scripts/renumber.vim'
 Plug 'vim-scripts/MatlabFilesEdition', { 'for': 'matlab' }
 Plug 'vimwiki/vimwiki'
@@ -90,6 +90,15 @@ Plug 'zorab47/vim-gams', { 'for': 'gams' }
 
 Plug 'lifepillar/pgsql.vim'
 Plug 'lifepillar/vim-cheat40'
+
+" Specialized NeoVim versus Vim8 configs
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 call plug#end()
 
@@ -556,6 +565,9 @@ augroup vimrc
 
   autocmd BufRead,BufNewFile *.wiki set filetype=vimwiki
 
+  " Assume conf on basic configuration file type patterns
+  autocmd BufRead,BufNewFile *.conf set filetype=conf
+
   " Setup snytax highlighting for rspec files if rails is not loaded (in which
   " case vim-rails will handle the highlighting for us)
   if !exists('g:loaded_rails')
@@ -572,6 +584,9 @@ augroup vimrc
   autocmd Filetype coffee map <buffer> <Leader>t :!teaspoon<CR>
   autocmd Filetype php    map <buffer> <Leader>t :!phpunit --colors %<CR>
   autocmd Filetype qf     setlocal nolist wrap
+
+  " deoplete ensure the popup window is closed correctly
+  autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 augroup END
 
 " }}}
@@ -589,6 +604,36 @@ let g:conoline_use_colorscheme_default_insert=1
 " Syntastic {{{
 " let g:syntastic_cpp_compiler = 'clang++'
 " let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+" }}}
+
+" Deoplete {{{
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+
+" disable autocomplete by default
+let b:deoplete_disable_auto_complete=1
+let g:deoplete_disable_auto_complete=1
+call deoplete#custom#buffer_option('auto_complete', v:false)
+
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+
+" Disable the candidates in Comment/String syntaxes.
+call deoplete#custom#source('_',
+            \ 'disabled_syntaxes', ['Comment', 'String'])
+
+"}}}
+
+
+" Javascript syntax/highlighting {{{
+
+let g:javascript_plugin_flow = 1
+
+"}}}
+
+" Ctags - Scala specificly (sbt-ctag) {{{
+set tags=./tags,tags,./.git/tags,../tags
 " }}}
 
 " Python Syntax {{{

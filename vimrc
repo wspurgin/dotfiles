@@ -4,6 +4,10 @@ scriptencoding utf-8
 
 set nocompatible
 
+if has('win32') || has('win64')
+  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+endif
+
 call plug#begin()
 
 Plug 'Keithbsmiley/investigate.vim'

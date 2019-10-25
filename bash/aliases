@@ -15,8 +15,8 @@ alias v="\$VISUAL"
 alias less="less -FrX"
 alias hi="history | tail -35"
 
-alias light="\$HOME/.bash/base16-shell/base16-solarized.light.sh"
-alias dark="\$HOME/.bash/base16-shell/base16-solarized.dark.sh"
+alias light="\$HOME/.bash/base16-shell/base16-eighties.light.sh"
+alias dark="\$HOME/.bash/base16-shell/base16-eighties.dark.sh"
 alias base16="\$BASE16_SHELL"
 
 # Bundler

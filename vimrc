@@ -25,12 +25,14 @@ Plug 'christoomey/vim-titlecase'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'derekwyatt/vim-scala'
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'drmikehenry/vim-fontsize'
 Plug 'fatih/vim-go'
 Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
 Plug 'gabebw/vim-spec-runner', { 'for': 'ruby' }
 Plug 'garbas/vim-snipmate'
 Plug 'godlygeek/tabular'
+Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'honza/vim-snippets'
 Plug 'hdima/python-syntax', { 'for': 'python' }
 Plug 'jeroenp/vim-xquery-syntax'
@@ -47,17 +49,20 @@ Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script', { 'for': ['coffee', 'ruby'] }
 Plug 'ktonga/vim-follow-my-lead'
-Plug 'kylef/apiblueprint.vim'
+" Plug 'wspurgin/apiblueprint.vim'
+Plug '~/Projects/apiblueprint.vim'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'miyakogi/conoline.vim'
 Plug 'morhetz/gruvbox'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'natew/ftl-vim-syntax'
 Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 Plug 'neomake/neomake'
 Plug 'pangloss/vim-javascript', { 'for': ['ruby', 'javascript', 'markdown'] }
 Plug 'pbrisbin/vim-mkdir'
 Plug 'python-mode/python-mode', { 'for': 'python' }
 Plug 'plasticboy/vim-markdown', { 'for': ['pandoc', 'markdown'] }
+Plug 'PProvost/vim-ps1'
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
 Plug 'rizzatti/dash.vim'
@@ -641,8 +646,11 @@ set tags=./tags,tags,./.git/tags,../tags
 " }}}
 
 " Python Syntax {{{
-let python_version_2 = 1
+" let python_version_2 = 1
 let python_highlight_all = 1
+" }}}
+" Pymode {{{
+let g:pymode_python = 'python3'
 " }}}
 " Backups {{{
 set nobackup
@@ -667,6 +675,11 @@ augroup vimrcEx
     \ endif
 
 augroup END
+
+function! SynGroup()
+    let l:s = synID(line('.'), col('.'), 1)
+    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfun
 
 command! Scratch new +setlocal\ buftype=nofile\ bufhidden=wipe\ ft=ruby\ noswapfile
 " }}}

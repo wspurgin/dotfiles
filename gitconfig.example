@@ -25,6 +25,10 @@
   # Remove branches that have already been merged with master
   # a.k.a. ‘delete merged’
   dm = "!git branch --merged | egrep -v '\\*|next|master' | xargs XARGSFLAGS git branch --delete"
+
+  # Delete "gone" branches (those whose remotes are gone but local is still there
+  dg = "!git branch -v | awk '/\\[gone\\]/{print $0}' | ( grep -q ^ && >/tmp/merged-branches && nvim /tmp/merged-branches && cat /tmp/merged-branches | awk '/\\[gone\\]/{print $1}' | xargs -L 1 -n 1 git branch -D ) || echo \"no 'gone' branches\""
+
   ; up = "!git remote update -p; git merge --ff-only @{u}"
   loga = log --pretty=format:'%C(yellow)%h %C(red)%ad %C(blue)%<(7)%aN%C(green)%d %Creset%s' --date=short --abbrev-commit --graph
   lognc = log --pretty=format:'%h %ad %<(7)%aN%d %s' --date=short --abbrev-commit --graph

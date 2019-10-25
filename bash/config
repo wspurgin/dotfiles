@@ -109,9 +109,9 @@ if [[ -n "$TMUX" ]] ; then
 
   hash toilet 2>/dev/null; pretty_print=$?
   font="future"
-  if [[ $OS == "darwin" ]]; then
-    font="letter"
-  fi
+  # if [[ $OS == "darwin" ]]; then
+  #   font="letter"
+  # fi
 
   if [[ $pretty_print -eq 0 ]]; then
     toilet -f "$font" "$session_name" | "$cat_cmd"
@@ -119,10 +119,6 @@ if [[ -n "$TMUX" ]] ; then
     printf "\nTMUX Session: %s\n" "$session_name" | "$cat_cmd"
   fi
 fi
-
-
-# Add project's bin/ to PATH after rbenv init.
-export PATH=".git/safe/../../bin:${PATH}"
 
 
 AUTOJUMP_PREFIX="/usr"

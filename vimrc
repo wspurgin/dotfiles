@@ -43,26 +43,24 @@ Plug 'junegunn/goyo.vim', { 'on': ['Goyo'] }
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-peekaboo'
+Plug 'justinmk/vim-syntax-extra'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script', { 'for': ['coffee', 'ruby'] }
 Plug 'ktonga/vim-follow-my-lead'
-" Plug 'wspurgin/apiblueprint.vim'
 Plug '~/Projects/apiblueprint.vim'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'miyakogi/conoline.vim'
 Plug 'morhetz/gruvbox'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'natew/ftl-vim-syntax'
 Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 Plug 'neomake/neomake'
 Plug 'pangloss/vim-javascript', { 'for': ['ruby', 'javascript', 'markdown'] }
 Plug 'pbrisbin/vim-mkdir'
 Plug 'python-mode/python-mode', { 'for': 'python' }
 Plug 'plasticboy/vim-markdown', { 'for': ['pandoc', 'markdown'] }
-Plug 'PProvost/vim-ps1'
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
 Plug 'rizzatti/dash.vim'
@@ -597,6 +595,9 @@ augroup vimrc
 
   " deoplete ensure the popup window is closed correctly
   autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+  " hightlight any Dockerfile regardless of `-dev` or `-prod`
+  autocmd BufRead,BufNewFile Dockerfile* set filetype=dockerfile
 augroup END
 
 " }}}
@@ -652,10 +653,11 @@ let python_highlight_all = 1
 " }}}
 " Pymode {{{
 let g:pymode_python = 'python3'
+let g:pymode_rope_regenerate_on_write = 0
 " }}}
 " Backups {{{
 set nobackup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupdir=~/.vim-tmp/,~/.tmp/,~/tmp/,/var/tmp/,/tmp/
 set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " set writebackup

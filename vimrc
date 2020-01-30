@@ -144,6 +144,7 @@ endif
 " Misc {{{
 set backspace=indent,eol,start
 set timeoutlen=500
+set inccommand=split " <- to show each :s replacement in quickfix window
 " }}}
 " Digraphs {{{
 digraphs .. 8230              " Add digraph for ellipsis (…) mapped to '..'

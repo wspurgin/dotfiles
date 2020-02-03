@@ -2,7 +2,12 @@
 
 set -e
 
-mem=(`awk -f ~/.bin/mem-usage /proc/meminfo | tail -1`)
+if [[ $OS == "darwin" ]]; then
+  mem=(`vm_stat -c 1 1 | awk -f ~/.bin/mem-usage-osx | tail -1`)
+else
+  mem=(`awk -f ~/.bin/mem-usage /proc/meminfo | tail -1`)
+fi
+
 total=${mem[0]}
 free=${mem[1]}
 usage=${mem[2]}

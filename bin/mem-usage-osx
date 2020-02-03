@@ -1,11 +1,5 @@
 #!/usr/bin/awk -f
 
-# /^\s+\d*$/ { free     = $1 }
-# /^\s+\d*$/ { active   = $2 }
-# /^\s+\d*$/ { specul   = $3 }
-# /^\s+\d*$/ { inactive = $4 }
-# /^\s+\d*$/ { wired    = $6 }
-
 { free     = $1 }
 { active   = $2 }
 { specul   = $3 }
@@ -14,14 +8,14 @@
 
 
 BEGIN {
-  printf "%8s %8s %8s\n", "Total", "Free%", "Avail%"
+  printf "%8s %8s %8s\n", "Total", "Free%", "Used%"
 }
 
 END {
-  in_use = active + wired
+  in_use = active + wired + specul
   available = free + inactive
   total = free + inactive + active + wired + specul
   total_in_gb = total * 4096 / 1024 / 1024 / 1000
 
-  printf "%7.1fG %8.0f %8.0f\n", total_in_gb, free / total * 100, available / total * 100
+  printf "%7.1fG %8.0f %8.0f\n", total_in_gb, available / total * 100, in_use / total * 100
 }

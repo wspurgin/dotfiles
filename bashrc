@@ -9,15 +9,7 @@ if [ -t 1 ]; then
   [ -f ~/.localrc-pre ] && source ~/.localrc-pre
 
   # Remove non-alpha characters: darwin12.0 -> darwin
-  OS=$(echo $OSTYPE | sed "s/[^a-zA-Z-]//g")
-
-  source ~/.bash/completions
-  source ~/.bash/config
-  source ~/.bash/aliases
-  source ~/.bash/paths
-
-  # FZF
-  [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+  export OS=$(echo $OSTYPE | sed "s/[^a-zA-Z-]//g")
 
   # chruby ruby switcher
   [ -f /usr/local/share/chruby/chruby.sh ] && source /usr/local/share/chruby/chruby.sh
@@ -26,6 +18,14 @@ if [ -t 1 ]; then
   export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+  source ~/.bash/completions
+  source ~/.bash/config
+  source ~/.bash/aliases
+  source ~/.bash/paths
+
+  # FZF
+  [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
   # rbenv
   if command -v rbenv >/dev/null 2>&1; then

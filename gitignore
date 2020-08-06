@@ -7,3 +7,4 @@
 **/vendor/bundle
 .lib-src
 .ropeproject
+gemrc

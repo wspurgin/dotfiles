@@ -59,6 +59,9 @@ if [[ $OS != "darwin" ]]; then
   alias open='xdg-open'
 fi
 
+# yarn
+alias yick='yarn install --check-files'
+
 # ThingM Blink
 alias bl="blink1 --random=3 -t 300 -q; blink1 --off -q"
 alias blink=blink1

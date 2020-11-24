@@ -30,7 +30,7 @@
   dg = "!git branch -v | awk -F' ' '/\\[gone\\]/{print $1}' | xargs XARGSFLAGS git branch -D"
 
   # checkout the default branch (based on origin/HEAD)
-  com = "!git name-rev refs/remotes/origin/HEAD --name-only | git checkout"
+  com = "!git name-rev refs/remotes/origin/HEAD --name-only | xargs XARGSFLAGS git checkout"
 
   ; up = "!git remote update -p; git merge --ff-only @{u}"
   loga = log --pretty=format:'%C(yellow)%h %C(red)%ad %C(blue)%<(7)%aN%C(green)%d %Creset%s' --date=short --abbrev-commit --graph

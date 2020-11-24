@@ -619,16 +619,18 @@ let g:conoline_use_colorscheme_default_insert=1
 
 " Deoplete {{{
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
+call deoplete#custom#option({
+      \ 'auto_complete': v:false,
+      \ 'smart_case': v:true,
+      \ })
+
 
 " disable autocomplete by default
-let b:deoplete_disable_auto_complete=1
-let g:deoplete_disable_auto_complete=1
-call deoplete#custom#buffer_option('auto_complete', v:false)
+" call deoplete#custom#buffer_option('auto_complete', v:false)
 
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
+" if !exists('g:deoplete#omni#input_patterns')
+"   call deoplete#custom#var('omni', 'input_pattern', {})
+" endif
 
 " Disable the candidates in Comment/String syntaxes.
 call deoplete#custom#source('_',

@@ -448,7 +448,9 @@ let NERDTreeDirArrows = 1
 " }}}
 
 " Vim-Ruby {{{
-let g:ruby_indent_access_modifier_style = 'indent'
+let g:ruby_indent_access_modifier_style = 'normal'
+let g:ruby_indent_assignment_style = 'variable'
+let g:ruby_indent_hanging_elements = 0
 
 let ruby_spellcheck_strings = 1
 " }}}
@@ -507,7 +509,7 @@ augroup vimrc
 
   " Neomake
   autocmd! BufWritePost * Neomake
-  let g:neomake_ruby_enabled_makers = ["rubocop", "mri"]
+  let g:neomake_ruby_enabled_makers = ["standardrb", "mri"]
 
   let g:neomake_typescript_enabled_makers = ["tslint"]
 

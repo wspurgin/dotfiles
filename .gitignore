@@ -5,3 +5,13 @@ vim/plugged
 vim/autoload/plug.vim.old
 
 **/doc/tags
+
+config/hub
+config/gh
+config/iterm2
+config/configstore
+config/gtk-2.0
+
+# User level node modules
+node_modules
+package-lock.json

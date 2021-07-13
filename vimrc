@@ -27,7 +27,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'drmikehenry/vim-fontsize'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
 Plug 'gabebw/vim-spec-runner', { 'for': 'ruby' }
 Plug 'garbas/vim-snipmate'
@@ -37,6 +37,7 @@ Plug 'honza/vim-snippets'
 Plug 'hdima/python-syntax', { 'for': 'python' }
 Plug 'jeroenp/vim-xquery-syntax'
 Plug 'joker1007/vim-ruby-heredoc-syntax', { 'for': 'ruby' }
+Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-update-rc --key-bindings --completion' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim', { 'on': ['Goyo'] }
@@ -233,6 +234,9 @@ endif
 
 " Paste from system clipboard
 map <Leader>p :set paste<CR>o<ESC>"+]p:set nopaste<CR>
+
+" Snippets - use modern SnipMate parser (v0 is deprecated)
+let g:snipMate = { 'snippet_version' : 1 }
 
 " Edit snippets - mnemonic: (e)dit(s)nippets
 map <Leader>es :tabe ~/.vim/bundle/vim-snippets/snippets/ruby.snippets<CR>

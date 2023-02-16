@@ -23,25 +23,14 @@ Required:
 Optional
 - autojump
 - coreutils (dircolors)
-- exuberant-ctags
+- universal-ctags
 
 ```
 sudo apt-get install silversearcher-ag exuberant-ctags coreutils autojump
 ```
 Or on OS X with Homebrew
 ```
-brew install ag ctags coreutils autojump
-```
-
-### Gems
-
-- awesome_print
-- brice
-- hirb
-- looksee
-
-```
-gem install awesome_print brice hirb looksee
+brew install ag universal-ctags coreutils autojump
 ```
 
 ## Sources

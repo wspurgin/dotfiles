@@ -42,13 +42,6 @@ shopt -s cdspell
 # cyan      #2aa198  6/6 cyan      37 #00afaf 60 -35 -05  42 161 152 175  74  63
 # green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
 
-# Base16 Shell
-BASE16_SHELL="$HOME/.bash/base16-shell/base16-eighties.dark.sh"
-
-if [ -n "$BASE16_SHELL" ]; then
-  source "$BASE16_SHELL"
-fi
-
 if [ -n "$TERM" ]; then
   dircolors=$HOME/.dircolors-$(tput colors)
   dircolors=$HOME/.dircolors.ansi-universal

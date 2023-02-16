@@ -3,9 +3,11 @@
 .*.swp
 .env
 *~
-/.ruby-version
 **/vendor/bundle
 .lib-src
 .ropeproject
 gemrc
 .byebug_history
+tags
+# The local ignore file used for the silversearcher-ag
+.ignore

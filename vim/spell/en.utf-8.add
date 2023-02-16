@@ -12,3 +12,9 @@ ActiveRecord
 ADR
 ingestors
 ingestor
+enqueuing
+Stibo
+stibo
+metadata
+args
+cli

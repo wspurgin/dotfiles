@@ -12,18 +12,17 @@ call plug#begin()
 
 Plug 'Keithbsmiley/investigate.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'arecarn/crunch.vim'
 Plug 'arecarn/selection.vim'
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'bling/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'bogado/file-line'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'christoomey/vim-titlecase'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'drmikehenry/vim-fontsize'
@@ -34,15 +33,14 @@ Plug 'garbas/vim-snipmate'
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'honza/vim-snippets'
-Plug 'hdima/python-syntax', { 'for': 'python' }
 Plug 'jeroenp/vim-xquery-syntax'
-Plug 'joker1007/vim-ruby-heredoc-syntax', { 'for': 'ruby' }
+" Plug 'joker1007/vim-ruby-heredoc-syntax', { 'for': 'ruby' }
 Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-update-rc --key-bindings --completion' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim', { 'on': ['Goyo'] }
 Plug 'junegunn/limelight.vim'
-Plug 'junegunn/seoul256.vim'
+" Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'kana/vim-textobj-entire'
@@ -51,22 +49,26 @@ Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script', { 'for': ['coffee', 'ruby'] }
 Plug 'ktonga/vim-follow-my-lead'
-Plug '~/Projects/apiblueprint.vim'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+Plug 'marko-cerovac/material.nvim'
 Plug 'miyakogi/conoline.vim'
 Plug 'morhetz/gruvbox'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 Plug 'neomake/neomake'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'pangloss/vim-javascript', { 'for': ['ruby', 'javascript', 'markdown'] }
 Plug 'pbrisbin/vim-mkdir'
-Plug 'python-mode/python-mode', { 'for': 'python' }
+" Plug 'python-mode/python-mode', { 'for': 'python' }
 Plug 'plasticboy/vim-markdown', { 'for': ['pandoc', 'markdown'] }
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
 Plug 'rizzatti/dash.vim'
 Plug 'rking/ag.vim'
 Plug 'ryanoasis/vim-devicons'
+" Plug 'savq/melange'
 Plug 'scrooloose/nerdtree'
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
 Plug 'tomtom/tlib_vim'
@@ -89,6 +91,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'vim-pandoc/vim-pandoc', { 'for': ['pandoc', 'markdown'] }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': ['pandoc', 'markdown'] }
 Plug 'vim-pandoc/vim-rmarkdown', { 'for': ['pandoc', 'markdown'] }
+Plug 'vim-python/python-syntax', { 'for': 'python' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'vim-scripts/renumber.vim'
 Plug 'vim-scripts/MatlabFilesEdition', { 'for': 'matlab' }
@@ -100,24 +103,46 @@ Plug 'lifepillar/pgsql.vim'
 Plug 'lifepillar/vim-cheat40'
 
 " Specialized NeoVim versus Vim8 configs
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 
 call plug#end()
 
 " }}}
-" Colors {{{
+" Status Line {{{
+
+" Lualine has to come before setting the colorscheme
+lua << END
+  require('lualine').setup {
+    options = {
+      theme = 'material',
+    }
+  }
+END
+
+" }}}
+" Colors & Status Line {{{
 syntax enable
 set background=dark
 
+lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
+
+lua << END
+  require('material').setup({
+    lualine_style = 'default' -- the stealth style
+  })
+END
+
 if has("gui_running") || &t_Co >= 256
-  let g:seoul256_background = 236
-  let g:seoul256_light_background = 256
+  " let g:seoul256_background = 236
+  " let g:seoul256_light_background = 256
+  let g:material_style = "deep ocean"
 
   if(exists('+termguicolors'))
     let &t_8f = "[38;2;%lu;%lu;%lum"
@@ -126,7 +151,7 @@ if has("gui_running") || &t_Co >= 256
     set termguicolors
   endif
 
-  colorscheme seoul256
+  colorscheme material
   set guifont=Inconsolata\ for\ Powerline\ Nerd\ Font\ Complete\ Mono:h11
 
   if &term =~ 'screen-256color' && exists('$TMUX')
@@ -352,11 +377,16 @@ nnoremap  <Leader>/ :nohlsearch<CR>
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
 " }}}
+" Ctags {{{
+set tags=./tags,tags,./.git/tags,../tags
+" }}}
 
 " Plugin Configs
 " --------------
 
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.wiki'}]
+
+let g:coq_settings = { 'auto_start': v:true, 'display.icons.mode': 'none', 'keymap.manual_complete': '<C-p>', 'clients.tmux.enabled': v:false, 'keymap.jump_to_mark': '' }
 
 let g:goyo_width = 82
 function! s:goyo_enter()
@@ -471,37 +501,19 @@ set rtp+=~/.fzf
 " }}}
 
 " Ctrl-P {{{
-let g:ctrlp_max_height = 20            " provide more space to display results
-set wildignore+=tmp/cache/**,*.scssc,*.sassc " ignore tmp files and Sass caches
+" let g:ctrlp_max_height = 20            " provide more space to display results
+" set wildignore+=tmp/cache/**,*.scssc,*.sassc " ignore tmp files and Sass caches
 
-if executable('ag')
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s --files-with-matches -g "" --nocolor --hidden'
+" if executable('ag')
+"   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+"   let g:ctrlp_user_command = 'ag %s --files-with-matches -g "" --nocolor --hidden'
 
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-  let &grepprg = 'ag --nogroup --nocolor --column'
-else
-  let &grepprg = 'grep -rn $* *'
-endif
-
-" }}}
-" Airline {{{
-
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-" Use unicode character separators instead of patched fonts for portability
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.linenr = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-
-let g:airline_theme='wombat'
+"   " ag is fast enough that CtrlP doesn't need to cache
+"   let g:ctrlp_use_caching = 0
+"   let &grepprg = 'ag --nogroup --nocolor --column'
+" else
+"   let &grepprg = 'grep -rn $* *'
+" endif
 
 " }}}
 " Invetigate.vim {{{
@@ -512,10 +524,11 @@ augroup vimrc
   autocmd!
 
   " Neomake
-  autocmd! BufWritePost * Neomake
+  " autocmd! BufWritePost * Neomake
+  call neomake#configure#automake('w')
   let g:neomake_ruby_enabled_makers = ["standardrb", "mri"]
 
-  let g:neomake_typescript_enabled_makers = ["tslint"]
+  let g:neomake_typescript_enabled_makers = ["eslint"]
 
   " Automatic rename of tmux window
   if exists('$TMUX') && !exists('$NORENAME')
@@ -600,7 +613,6 @@ augroup vimrc
   autocmd Filetype qf     setlocal nolist wrap
 
   " deoplete ensure the popup window is closed correctly
-  autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
   " hightlight any Dockerfile regardless of `-dev` or `-prod`
   autocmd BufRead,BufNewFile Dockerfile* set filetype=dockerfile
@@ -613,36 +625,6 @@ augroup END
   vmap <leader>gt <Plug>Titlecase
   nmap <leader>gT <Plug>TitlecaseLine
 " }}}
-" Conoline {{{
-let g:conoline_use_colorscheme_default_normal=1
-let g:conoline_use_colorscheme_default_insert=1
-" }}}
-
-" Syntastic {{{
-" let g:syntastic_cpp_compiler = 'clang++'
-" let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-" }}}
-
-" Deoplete {{{
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option({
-      \ 'auto_complete': v:false,
-      \ 'smart_case': v:true,
-      \ })
-
-
-" disable autocomplete by default
-" call deoplete#custom#buffer_option('auto_complete', v:false)
-
-" if !exists('g:deoplete#omni#input_patterns')
-"   call deoplete#custom#var('omni', 'input_pattern', {})
-" endif
-
-" Disable the candidates in Comment/String syntaxes.
-call deoplete#custom#source('_',
-            \ 'disabled_syntaxes', ['Comment', 'String'])
-
-"}}}
 
 
 " Javascript syntax/highlighting {{{
@@ -651,9 +633,6 @@ let g:javascript_plugin_flow = 1
 
 "}}}
 
-" Ctags - Scala specificly (sbt-ctag) {{{
-set tags=./tags,tags,./.git/tags,../tags
-" }}}
 
 " Python Syntax {{{
 " let python_version_2 = 1

@@ -15,3 +15,10 @@ config/gtk-2.0
 # User level node modules
 node_modules
 package-lock.json
+
+# any Compile Zsh Word Code files
+*.zwc
+
+# Compiled vim spell files
+/vim/spell/*
+!/vim/spell/*.add

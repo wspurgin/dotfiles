@@ -96,8 +96,8 @@ if [[ -n "$TMUX" ]] ; then
   session_name="$(tmux list-pane -F '#S' | head -1)"
   cat_cmd="cat"
 
-  if hash lolcat 2>/dev/null; then
-    cat_cmd="lolcat"
+  if hash gay 2>/dev/null; then
+    cat_cmd="gay"
   fi
 
   hash toilet 2>/dev/null; pretty_print=$?

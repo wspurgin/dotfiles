@@ -25,12 +25,20 @@ Optional
 - coreutils (dircolors)
 - universal-ctags
 
+Prettify output (e.g., Tmux session names at launch):
+- toilet
+- gay (Python 3 required)
+
 ```
-sudo apt-get install silversearcher-ag universal-ctags coreutils autojump
+sudo apt-get install silversearcher-ag universal-ctags coreutils autojump toilet
+
+pip3 install gay
 ```
 Or on OS X with Homebrew
 ```
-brew install ag universal-ctags coreutils autojump
+brew install ag universal-ctags coreutils autojump toilet
+
+pip3 install gay
 ```
 
 ## Sources

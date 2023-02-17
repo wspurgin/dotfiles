@@ -603,7 +603,7 @@ augroup vimrc
   endif
 
   " Make ?s part of words
-  autocmd FileType ruby,eruby,yaml setlocal iskeyword+=? spell
+  autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
 
   autocmd ColorScheme * highlight clear SignColumn
 

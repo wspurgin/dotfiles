@@ -8,6 +8,11 @@ if [ -t 1 ]; then
   # when the emulator cannot, lame. :(
   [ -f ~/.localrc-pre ] && source ~/.localrc-pre
 
+  \shopt -u lastpipe 2> /dev/null
+  shell_name='bash'; : | shell_name='zsh'
+
+  export CURRENT_SHELL=$shell_name
+
   # Remove non-alpha characters: darwin12.0 -> darwin
   export OS=$(echo $OSTYPE | sed "s/[^a-zA-Z-]//g")
 
@@ -25,7 +30,13 @@ if [ -t 1 ]; then
   source ~/.bash/paths
 
   # FZF
-  [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+  if [[ $CURRENT_SHELL == 'bash' ]]; then
+    [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+  fi
+
+  if [[ $CURRENT_SHELL == 'zsh' ]]; then
+    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+  fi
 
   # rbenv
   if command -v rbenv >/dev/null 2>&1; then

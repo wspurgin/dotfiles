@@ -154,5 +154,8 @@ install_dotfiles () {
 setup_gitconfig "$1" "$2"
 install_dotfiles
 
+# Install and configure oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --keep-zshrc
+
 echo ''
 echo '  All installed!'

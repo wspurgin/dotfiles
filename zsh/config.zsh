@@ -1,29 +1,7 @@
-#!/bin/bash
+#!/bin/zsh
 
-umask 022
-
-# don't put duplicate lines in the history.
-export HISTCONTROL=ignoreboth
-export HISTSIZE=50000
-
-# set vim as the visual editor
 export VISUAL=nvim
 export EDITOR=nvim
-
-# set pager display ANSI colors
-export PAGER="less -FRSX"
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-if [[ $CURRENT_SHELL == 'bash' ]]; then
-  shopt -s checkwinsize
-
-  # Append to the Bash history file, rather than overwriting it
-  shopt -s histappend
-
-  # Autocorrect typos in path names when using `cd`
-  shopt -s cdspell
-fi
 
 # SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
 # --------- ------- ---- -------  ----------- ---------- ----------- -----------
@@ -57,36 +35,9 @@ if [ -n "$TERM" ]; then
   fi
 fi
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-cygwin|xterm-color)
-    PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    ;;
-*256color*)
-    PS1='\[\e[38;5;8m\]\h \[\e[34m\]\w\[\e[0m\]$(~/.bin/git-cwd-info)\[\e[0m\]\n\[\e[35m\]$\[\e[0m\] '
-    ;;
-*)
-    PS1='\u@\h:\w\$ '
-    ;;
-esac
-
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
-    ;;
-*)
-    ;;
-esac
-
-if [[ $OS == "darwin" ]]; then
-  fixed_term_file="$HOME/.$TERM.ti"
-  if [[ ! -f "$fixed_term_file" ]]; then
-    infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $fixed_term_file
-  fi
-  export TERMINFO="$fixed_term_file"
-fi
+# chruby ruby switcher
+[ -f /usr/local/share/chruby/chruby.sh ] && source /usr/local/share/chruby/chruby.sh
+[ -f /usr/local/share/chruby/auto.sh ] && source /usr/local/share/chruby/auto.sh
 
 
 # ╺┳╸┏┳┓╻ ╻╻ ╻
@@ -127,22 +78,14 @@ if command -v autojump >/dev/null 2>&1; then
 fi
 
 # Set up fzf fuzzy finder (bashrc pulls in the fzf)
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
 
 # To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-# Colored man pages: http://linuxtidbits.wordpress.com/2009/03/23/less-colors-for-man-pages/
-# Less Colors for Man Pages
-export LESS_TERMCAP_mb=$'\E[01;31m'            # begin blinking
-export LESS_TERMCAP_md=$'\E[01;38;5;4m'        # begin bold
-export LESS_TERMCAP_me=$'\E[0m'                # end mode
-export LESS_TERMCAP_se=$'\E[0m'                # end standout-mode
-export LESS_TERMCAP_so=$'\E[48;5;3m\E[38;5;0m' # begin standout-mode - info box
-export LESS_TERMCAP_ue=$'\E[0m'                # end underline
-export LESS_TERMCAP_us=$'\E[04;38;5;5m'        # begin underline
-
-export MAKEPASSWD_CHARS="!\"#$%&\`()*,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_abcdefghijklmnopqrstuvwxyz{|}~"
-export GPG_TTY="$(tty)"
-
-# vim: ft=sh
+# Enable Python virtual envs
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export PYENV_ROOT="$HOME/.pyenv"
+if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init --path)"; eval "$(pyenv init -)"; fi
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi

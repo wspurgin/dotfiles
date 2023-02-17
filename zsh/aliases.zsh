@@ -1,0 +1,141 @@
+
+# some more ls aliases
+alias ll='ls -al'
+alias l='ls -lF'
+alias la='ls -a'
+
+# cd
+alias ..='cd ..'
+
+alias screen='screen -T $TERM'
+
+alias e="\$EDITOR"
+alias v="\$VISUAL"
+
+alias less="less -FrX"
+alias hi="history | tail -35"
+
+# Bundler
+alias b="bundle"
+alias be="bundle exec"
+
+# foreman
+alias fr='foreman run'
+
+# git
+alias gcv='git commit -v'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gdh='git diff HEAD'
+alias gl='git pull --ff-only'
+alias gp='git push'
+alias gpp='git pull; git push'
+alias gap='git add --patch'
+alias gadd='git add'
+alias gg='git grep'
+
+# rails
+alias tlog='tail -f log/development.log'
+
+# rails migration
+alias rdm='rake db:migrate db:test:prepare'
+alias rdr='rake db:rollback'
+alias migrte='rake db:migrate && rake db:rollback && rake db:migrate && rake db:test:prepare'
+alias m="migrate"
+alias rdbp="rake db:test:prepare"
+
+# rake
+alias r="rake"
+
+# capistrano
+alias csd='cap staging deploy'
+
+# Add the open command alias unless we're on OSX
+if [[ $OS != "darwin" ]]; then
+  alias open='xdg-open'
+fi
+
+# yarn
+alias yick='yarn install --check-files'
+
+function g {
+  if [[ $# -gt 0 ]]; then
+    git "$@"
+  else
+    git status -s
+  fi
+}
+
+function tlf {
+  if [[ $# == 0 && -f log/development.log ]]; then
+    less -FRSX +F log/development.log
+  else
+    less -FRSX +F "$@"
+  fi
+}
+
+function browse {
+  if [[ $# -gt 0 ]]; then
+    open "$@" > /dev/null 2>&1 &
+  else
+
+    if [[ -f .env ]]; then
+      port=$(grep PORT .env | cut --delimiter== --fields=2)
+
+      if [[ $port == "" ]]; then
+        port=3000
+      fi
+    fi
+
+    echo "Opening \"http://localhost:$port\" in your browser…"
+
+    open "http://localhost:$port" > /dev/null 2>&1 &
+  fi
+}
+
+# enable color support of ls and also add handy aliases
+if [ "$TERM" != "dumb" ]; then
+  if [[ $OS == "darwin" ]]; then
+    alias ls='ls -Gh'
+  else
+    alias ls='ls --color=auto -hB'
+  fi
+fi
+
+# IPython Notebook alias w/pylab support
+alias ipynb='ipython notebook --pylab inline'
+
+# Random Password Function
+randpw(){ date +%s | shasum | base64 | head -c 32 ; echo; }
+
+# Pushover push function (for notification when running long jobs)
+function pusher {
+  : "${TITLE:="$USER@$(hostname)"}"
+  $(curl -s -F "token=$PUSHER_TERMINAL_TOKEN" \
+  -F "user=$PUSHER_USER_KEY" \
+  -F "title=$TITLE" \
+  -F "message=$1" https://api.pushover.net/1/messages.json > /dev/null &)
+}
+
+function notify {
+
+  if eval "$@"; then
+    message="$* completed"
+  else
+    message="$* failed"
+  fi
+
+  pusher "$message"
+
+  if [[ $OS == "darwin" ]]; then
+    say "$message"
+  else
+    notify-send "$(pwd)" "$message"
+  fi
+}
+
+function randln {
+  head -$(((((${RANDOM} << 15) + ${RANDOM}) % `wc -l < $1`) + 1)) $1 | tail -1
+}
+
+# vim: syntax=sh

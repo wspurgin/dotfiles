@@ -51,7 +51,6 @@ Plug 'kchmck/vim-coffee-script', { 'for': ['coffee', 'ruby'] }
 Plug 'ktonga/vim-follow-my-lead'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'marko-cerovac/material.nvim'
-Plug 'miyakogi/conoline.vim'
 Plug 'morhetz/gruvbox'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'octol/vim-cpp-enhanced-highlight'

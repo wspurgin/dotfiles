@@ -19,10 +19,4 @@ if [[ $OS == "darwin" ]]; then
   export PATH=$PATH":/usr/local/opt/gettext/bin"
   export PATH=$PATH":/usr/local/texlive/2016/bin/x86_64-darwin/"
 fi
-
-# If PYENV_ROOT is set (should be by config.zsh), ensure we're getting the pyenv
-# executables
-if [ -z PYENV_ROOT ]; then
-  export PATH="$PYENV_ROOT/bin:$PATH"
-fi
 # vim: syntax=sh

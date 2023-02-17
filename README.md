@@ -26,7 +26,7 @@ Optional
 - universal-ctags
 
 ```
-sudo apt-get install silversearcher-ag exuberant-ctags coreutils autojump
+sudo apt-get install silversearcher-ag universal-ctags coreutils autojump
 ```
 Or on OS X with Homebrew
 ```

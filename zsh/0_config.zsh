@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+[ -f ~/.localrc-pre ] && source ~/.localrc-pre
+
 export VISUAL=nvim
 export EDITOR=nvim
 

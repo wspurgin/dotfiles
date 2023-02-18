@@ -1,3 +1,4 @@
 [submodule "zsh/themes/spaceship-prompt"]
 	path = zsh/themes/spaceship-prompt
 	url = https://github.com/spaceship-prompt/spaceship-prompt.git
+	branch = v4.13.1

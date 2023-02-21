@@ -130,7 +130,12 @@ END
 syntax enable
 set background=dark
 
-lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
+lua << END
+  require'nvim-treesitter.configs'.setup{
+    ensure_installed = { "ruby", "python", "embedded_template", "go" },
+    highlight={enable=true}
+  }
+END
 
 lua << END
   require('material').setup({

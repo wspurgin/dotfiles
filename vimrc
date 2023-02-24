@@ -227,6 +227,10 @@ endif
 set foldenable
 set foldlevelstart=10   " open most folds by default to
 set foldnestmax=10      " 10 nested fold max
+
+" Let treesitter handle folding
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 " }}}
 " Leader Shortcuts {{{
 " open NerdTree

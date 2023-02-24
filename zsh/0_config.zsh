@@ -1,6 +1,20 @@
 #!/bin/zsh
 
+# Custom commands to run before setting up the default
+# environment. Such as setting TERM=xterm-256color
+# when the emulator cannot, lame. :(
 [ -f ~/.localrc-pre ] && source ~/.localrc-pre
+
+export CURRENT_SHELL=$shell_name
+
+# Remove non-alpha characters: darwin12.0 -> darwin
+export OS=$(echo $OSTYPE | sed "s/[^a-zA-Z-]//g")
+
+# If NPM account has been configured and verified, pull out the NPM_TOKEN env
+# TODO: Maybe oh-my-zsh can do this for me?
+if [ -f "$HOME/.npmrc" ]; then
+  export NPM_TOKEN=$(cat "$HOME/.npmrc" | awk -F '_authToken=' '{ print $2  }')
+fi
 
 export VISUAL=nvim
 export EDITOR=nvim

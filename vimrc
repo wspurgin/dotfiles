@@ -20,19 +20,21 @@ Plug 'arecarn/selection.vim'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'bogado/file-line'
 Plug 'chrisbra/vim-diff-enhanced'
+Plug 'chrismaher/vim-lookml'
 Plug 'christoomey/vim-titlecase'
 Plug 'christoomey/vim-tmux-navigator'
 " Plug 'ctrlpvim/ctrlp.vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'drmikehenry/vim-fontsize'
+Plug 'elixir-editors/vim-elixir'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
 Plug 'gabebw/vim-spec-runner', { 'for': 'ruby' }
-Plug 'garbas/vim-snipmate'
+" Plug 'garbas/vim-snipmate'
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
-Plug 'honza/vim-snippets'
+" Plug 'honza/vim-snippets'
 Plug 'jeroenp/vim-xquery-syntax'
 " Plug 'joker1007/vim-ruby-heredoc-syntax', { 'for': 'ruby' }
 Plug 'jparise/vim-graphql'
@@ -101,15 +103,8 @@ Plug 'zorab47/vim-gams', { 'for': 'gams' }
 Plug 'lifepillar/pgsql.vim'
 Plug 'lifepillar/vim-cheat40'
 
-" Specialized NeoVim versus Vim8 configs
-" if has('nvim')
-"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-"   Plug 'Shougo/deoplete.nvim'
-"   Plug 'roxma/nvim-yarp'
-"   Plug 'roxma/vim-hug-neovim-rpc'
-" endif
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 
 call plug#end()
 
@@ -269,10 +264,10 @@ endif
 map <Leader>p :set paste<CR>o<ESC>"+]p:set nopaste<CR>
 
 " Snippets - use modern SnipMate parser (v0 is deprecated)
-let g:snipMate = { 'snippet_version' : 1 }
+" let g:snipMate = { 'snippet_version' : 1 }
 
 " Edit snippets - mnemonic: (e)dit(s)nippets
-map <Leader>es :tabe ~/.vim/bundle/vim-snippets/snippets/ruby.snippets<CR>
+" map <Leader>es :tabe ~/.vim/bundle/vim-snippets/snippets/ruby.snippets<CR>
 
 " Yank to system clipboard
 map <Leader>y "+y
@@ -394,7 +389,7 @@ set tags=./tags,tags,./.git/tags,../tags
 
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.wiki'}]
 
-let g:coq_settings = { 'auto_start': v:true, 'display.icons.mode': 'none', 'keymap.manual_complete': '<C-p>', 'clients.tmux.enabled': v:false, 'keymap.jump_to_mark': '' }
+let g:coq_settings = { 'auto_start': v:true, 'display.icons.mode': 'none', 'clients.tmux.enabled': v:false}
 
 let g:goyo_width = 82
 function! s:goyo_enter()

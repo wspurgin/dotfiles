@@ -77,6 +77,7 @@ plugins=(
   macos
   rake
   ruby
+  golang
 )
 
 source $ZSH/oh-my-zsh.sh

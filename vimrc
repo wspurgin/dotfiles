@@ -51,12 +51,13 @@ Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script', { 'for': ['coffee', 'ruby'] }
 Plug 'ktonga/vim-follow-my-lead'
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'marko-cerovac/material.nvim'
 Plug 'morhetz/gruvbox'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
+" Need to come back to this it's not working with the current setup due to
+" keybinds on <C-T> and others
+  " Plug 'Quramy/tsuquyomi', { 'for': 'typescript' } 
 Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 Plug 'neomake/neomake'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -127,7 +128,7 @@ set background=dark
 
 lua << END
   require'nvim-treesitter.configs'.setup{
-    ensure_installed = { "ruby", "python", "embedded_template", "go" },
+    ensure_installed = { "ruby", "python", "embedded_template", "go" , "vim", "vimdoc", "typescript", "javascript" },
     highlight={enable=true}
   }
 END
@@ -531,7 +532,7 @@ augroup vimrc
   call neomake#configure#automake('w')
   let g:neomake_ruby_enabled_makers = ["standardrb", "mri"]
 
-  let g:neomake_typescript_enabled_makers = ["eslint"]
+  " let g:neomake_typescript_enabled_makers = ["eslint"]
 
   " Automatic rename of tmux window
   if exists('$TMUX') && !exists('$NORENAME')

@@ -18,5 +18,7 @@ if [[ $OS == "darwin" ]]; then
   export PATH=$PATH":/Applications/Postgres.app/Contents/Versions/latest/bin"
   export PATH=$PATH":/usr/local/opt/gettext/bin"
   export PATH=$PATH":/usr/local/texlive/2016/bin/x86_64-darwin/"
+  export PATH="$PATH:$HOME/go/bin"
+  export PATH="$PATH:$HOME/Library/Python/3.9/bin"
 fi
 # vim: syntax=sh

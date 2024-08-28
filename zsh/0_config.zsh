@@ -82,6 +82,10 @@ if [[ -n "$TMUX" ]] ; then
   fi
 fi
 
+# OS X based config
+if [[ $OS == "darwin" ]]; then
+  export PATH=$PATH":/opt/homebrew/bin"
+fi
 
 AUTOJUMP_PREFIX="/usr"
 if command -v brew >/dev/null 2>&1; then
@@ -94,7 +98,12 @@ if command -v autojump >/dev/null 2>&1; then
 fi
 
 # Set up fzf fuzzy finder (bashrc pulls in the fzf)
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if command -v fzf >/dev/null 2>&1; then
+  source <(fzf --zsh)
+  # export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+  export FZF_DEFAULT_COMMAND='ag -l -g ""'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
 
 # To apply the command to CTRL-T as well

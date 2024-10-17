@@ -3,6 +3,7 @@
 .*.swp
 .env
 *~
+*.bak
 **/vendor/bundle
 .lib-src
 .ropeproject

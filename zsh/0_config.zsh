@@ -84,6 +84,7 @@ fi
 
 # OS X based config
 if [[ $OS == "darwin" ]]; then
+  # Export homebrew path
   export PATH=$PATH":/opt/homebrew/bin"
 fi
 
@@ -94,7 +95,7 @@ fi
 
 # Setup autojump, a faster way to navigate directories.
 if command -v autojump >/dev/null 2>&1; then
-  source "$AUTOJUMP_PREFIX"/share/autojump/autojump.bash
+  source "$AUTOJUMP_PREFIX"/share/autojump/autojump.zsh
 fi
 
 # Set up fzf fuzzy finder (bashrc pulls in the fzf)

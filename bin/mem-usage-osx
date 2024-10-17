@@ -1,10 +1,16 @@
 #!/usr/bin/awk -f
 
+/page size of .* bytes/ {
+  page_size = $8
+}
+NR<=2 { next }
 { free     = $1 }
 { active   = $2 }
 { specul   = $3 }
 { inactive = $4 }
 { wired    = $6 }
+{ file_backed = $13 }
+{ compressed = $16 }
 
 
 BEGIN {
@@ -12,10 +18,10 @@ BEGIN {
 }
 
 END {
-  in_use = active + wired + specul
+  in_use = active + specul + wired + compressed
   available = free + inactive
-  total = free + inactive + active + wired + specul
-  total_in_gb = total * 4096 / 1024 / 1024 / 1000
+  total = available + in_use
+  total_in_gb = total * page_size / 1024 / 1024 / 1000
 
   printf "%7.1fG %8.0f %8.0f\n", total_in_gb, available / total * 100, in_use / total * 100
 }

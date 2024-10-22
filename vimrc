@@ -32,6 +32,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
 Plug 'gabebw/vim-spec-runner', { 'for': 'ruby' }
 " Plug 'garbas/vim-snipmate'
+Plug 'github/copilot.vim'
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 " Plug 'honza/vim-snippets'
@@ -390,7 +391,11 @@ set tags=./tags,tags,./.git/tags,../tags
 
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.wiki'}]
 
-let g:coq_settings = { 'auto_start': v:true, 'display.icons.mode': 'none', 'clients.tmux.enabled': v:false}
+let g:coq_settings = { 'auto_start': v:true, 'display.icons.mode': 'none', 'clients.tmux.enabled': v:false, 'keymap.jump_to_mark': '<c-m>' }
+
+" Copilot
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
 
 let g:goyo_width = 82
 function! s:goyo_enter()

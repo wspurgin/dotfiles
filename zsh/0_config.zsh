@@ -86,6 +86,13 @@ fi
 if [[ $OS == "darwin" ]]; then
   # Export homebrew path
   export PATH=$PATH":/opt/homebrew/bin"
+  # if the fzf bin is found, then add it to the path if its not already there
+  # from some other setup script
+  if [[ -d "$HOME/.fzf/bin" ]]; then
+    if [[ ! "$PATH" == "*$HOME/.fzf/bin*" ]]; then
+      PATH="${PATH:+${PATH}:}$HOME/.fzf/bin"
+    fi
+  fi
 fi
 
 AUTOJUMP_PREFIX="/usr"

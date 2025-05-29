@@ -78,6 +78,7 @@ plugins=(
   rake
   ruby
   golang
+  asdf
 )
 
 source $ZSH/oh-my-zsh.sh

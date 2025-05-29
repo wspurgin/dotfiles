@@ -421,7 +421,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 "Builtin Customizations {{{
 " Markdown
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby', 'sql']
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby', 'sql', 'protobuf=proto', 'go', 'mermaid']
 let g:vim_markdown_new_list_item_indent = 2
 
 "}}}
@@ -536,8 +536,18 @@ augroup vimrc
   " autocmd! BufWritePost * Neomake
   call neomake#configure#automake('w')
   let g:neomake_ruby_enabled_makers = ["standardrb", "mri"]
+  let g:neomake_highlight_lines=1
 
   " let g:neomake_typescript_enabled_makers = ["eslint"]
+  let g:neomake_golangci_lint_maker = {
+      \ 'exe': 'golangci-lint',
+      \ 'args': ['run', '--output.text.path=stdout', '--output.text.print-issued-lines=false', '--show-stats=false', '--path-mode=abs'],
+      \ 'append_file': 0,
+      \ 'cwd': '%:p:h',
+      \ 'errorformat':
+        \ '%f:%l:%c: %m,' .
+        \ '%f:%l: %m'
+      \ }
 
   " Automatic rename of tmux window
   if exists('$TMUX') && !exists('$NORENAME')
@@ -545,7 +555,7 @@ augroup vimrc
     au VimLeave * call system('tmux set-window automatic-rename on')
   endif
 
-  let g:pandoc#formatting#mode = "h"
+  let g:pandoc#formatting#mode = "sA"
   let g:pandoc#modules#disabled = ['chdir']
 
   " Markdown specifics: enable spellchecking and hard wrap at 80 characters

@@ -12,7 +12,7 @@ alias screen='screen -T $TERM'
 alias e="\$EDITOR"
 alias v="\$VISUAL"
 
-alias less="less -FrX"
+alias less="less -FXS"
 alias hi="history | tail -35"
 
 # Bundler

@@ -12,3 +12,4 @@ gemrc
 tags
 # The local ignore file used for the silversearcher-ag
 .ignore
+.DS_Store

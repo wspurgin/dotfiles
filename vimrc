@@ -120,6 +120,9 @@ lua << END
       theme = 'material',
     }
   }
+
+  -- LSP config
+  vim.lsp.enable("oxfmt")
 END
 
 " }}}

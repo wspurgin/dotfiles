@@ -13,3 +13,6 @@ tags
 # The local ignore file used for the silversearcher-ag
 .ignore
 .DS_Store
+.tool-versions
+
+**/.claude/settings.local.json

@@ -22,3 +22,5 @@ package-lock.json
 # Compiled vim spell files
 /vim/spell/*
 !/vim/spell/*.add
+
+/skills/**/evals/*
